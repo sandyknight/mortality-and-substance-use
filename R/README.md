@@ -1,4 +1,4 @@
-# Premature mortality and subtstance use
+# Premature mortality and substance use
 - Ask 1: What proportion of premature deaths, given a cutoff point e.g. 55, are due to drugs and alcohol.  
 - Ask 2: Years of life lost (YLL) as a measure of premature mortality 
 *NB: ask Chioma for alcohol-specific deaths data by age and maybe LA.* 
@@ -8,11 +8,17 @@
 
 Original email instructions from JK:
 
-> Is deaths during and after treatment that not poisonings (or alc specific) but will be in a large part due to drug or alcohol use. So once you have worked out the total number of poisoning deaths 
+> Is deaths during and after treatment that not poisonings (or alc specific) but
+> will be in a large part due to drug or alcohol use. So once you have worked out 
+> the total number of poisoning deaths 
 
-> Using the data in the toolkit on the beta site can you add in the other opiate deaths of other causes not poisoning for those that died in treatment in the year you are looking at. Then the same for non-opiates and lastly the same for alcohol excluding alc specific deaths that you will have got from the alc specific data– you should be able to get the age for all of these which is why you need to use the beta site. 
+> Using the data in the toolkit on the beta site can you add in the other opiate
+> deaths of other causes not poisoning for those that died in treatment in the 
+> year you are looking at. Then the same for non-opiates and lastly the same for alcohol excluding alc specific deaths that you will have got from the alc specific data– you should be able to get the age for all of these which is why you need to use the beta site. 
 
-> Can you also then add in the people that have died one year after leaving treatment – using the year before and selecting the treatment status of one year post (we can assume that these are also all drug and alc related being so close to their treatment date) 
+> Can you also then add in the people that have died one year after leaving 
+> treatment – using the year before and selecting the treatment status of one 
+> year post (we can assume that these are also all drug and alc related being so close to their treatment date) 
 
 > Can you split out each different cohort and component you are adding so we can see how much each one adds. 
 
@@ -21,7 +27,12 @@ Original email instructions from JK:
 
 Latest email instructions from JK:
 
-> Morning – this has gone in for the 18th. If possible it would be really good to have some of the premature mortality stuff available to discuss at the meeting. So could you focus first on updating the work that estimates the total number of drug and alcohol deaths by age (with drugs separate, alcohol separate and then combined) and then what % of total deaths in each age range (and overall under 50) are a result of either of the three substance group above. 
+> Morning – this has gone in for the 18th. If possible it would be really good 
+> to have some of the premature mortality stuff available to discuss at the meeting.
+> So could you focus first on updating the work that estimates the total number of
+> drug and alcohol deaths by age (with drugs separate, alcohol separate and then 
+> combined) and then what % of total deaths in each age range (and overall under 50) 
+> are a result of either of the three substance group above. 
 
 > It would also be good to have an overall breakdown of how we have arrived at the total number of drug and alcohol deaths. i.e. DRDs + non DRD drug users in treatment + non DRDs drugs users left treatment but died in the year following etc. 
 
