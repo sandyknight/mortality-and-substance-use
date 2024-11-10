@@ -86,8 +86,6 @@ txd %>%
   filter(drug_group  != "alcohol only") %>% 
   select(-geography, -period_range)
 
-txd
-pd
 
 txd_national <- 
 txd %>% 
@@ -105,6 +103,14 @@ colnames(pd_national) <- grep(pattern = "treatment_status", colnames(txd_nationa
 
 drug_deaths_national <- 
   bind_rows(txd_national, pd_national)
+
+
+drug_deaths_national <- 
+drug_deaths_national |> 
+  ungroup() |> 
+  mutate(treatment_status = if_else(is.na(treatment_status), "Not relevant: poisoning w/ drug misuse", treatment_status)) |> 
+  filter(treatment_status != "Died one or more years following discharge") |> 
+  select(-treatment_status)
 
 write_csv(drug_deaths_national, "data/processed/drug_deaths_national.csv")
 
