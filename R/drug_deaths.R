@@ -70,6 +70,15 @@ pd %>%
   mutate(sex = case_match(sex, "M" ~ "Male", "F" ~ "Female"))
 
 
+# Save summarised by local authority for IMD analysis ---------------------
+
+
+
+pd |> 
+  group_by(reg_year, dat, dat_nm) |> 
+  summarise(count = sum(count)) |> 
+  write_csv("drug_poisoning_deaths_misuse_la.csv")
+
 txd <- 
   read_parquet("data/raw/tx_deaths_la_2122_2223.parquet")
 
@@ -85,6 +94,16 @@ txd %>%
   filter(death_cause != "Alcohol-specific death") |> 
   filter(drug_group  != "alcohol only") %>% 
   select(-geography, -period_range)
+
+txd |> 
+  group_by(period, area_code, area_name) |> 
+  select(-agegrp) |> 
+  summarise(across(where(is.numeric), sum)) |> 
+  write_csv("data/processed/tx_deaths_la.csv")
+
+
+
+# Summarising to national level -------------------------------------------
 
 
 txd_national <- 
