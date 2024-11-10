@@ -5,7 +5,6 @@ library(tidyverse)
 library(arrow)
 library(flextable)
 
-sysfonts::font_add_google("Roboto", "roboto")
 
 df <- read_parquet("data/raw/ndtms_mortality_data.parquet")
 
@@ -129,12 +128,11 @@ drug_deaths_national_dc %>%
     "Non-poisoning deaths: Died one or more years following discharge"
   )), ordered = TRUE))
 
-showtext_auto()  
 p1 <- 
 drug_deaths_national_dc %>% 
   ggplot(aes(x = period, y = count)) + 
   geom_col(aes(fill = death_category, alpha = death_category, linetype = death_category), colour = "black", width = 0.5) +
-  geom_text(aes(label = scales::comma(count), group = death_category, alpha = death_category), position = position_stack(0.5), size = 10) + 
+  geom_text(aes(label = scales::comma(count), group = death_category, alpha = death_category), position = position_stack(0.5)) + 
   scale_fill_lancet(alpha = 0.8) + 
   theme_bw() + 
   theme(legend.position = "none",
@@ -143,15 +141,34 @@ drug_deaths_national_dc %>%
         #plot.margin = margin(0,10,0,0,unit = "cm"),
         axis.ticks.x = element_blank(),
         panel.grid = element_blank(),
-        text = element_text(family = "roboto", size = 30)
+        text = element_text()
         ) +
   scale_y_continuous(labels = scales::comma, breaks = c(2500, 5000, 6199, 7500)) + 
   scale_x_continuous(limits = c(2021,2026), breaks = c(2022, 2023)) +
-  labs(fill = NULL, x = NULL, y = "Count of deaths", title = "Deaths related to drug misuse")
+  scale_alpha_manual(
+    values = c(
+      "Initial poisoning deaths" = 1,
+      "Additional poisoning deaths" = 1,
+      "Non-poisoning deaths: Died in treatment" = 1,
+      "Non-poisoning deaths: Died within a year of discharge" = 1,
+      "Non-poisoning deaths: Died one or more years following discharge" = 0.3
+    )
+  ) +
+  scale_linetype_manual(
+    values = c(
+      "Initial poisoning deaths" = 1,
+      "Additional poisoning deaths" = 1,
+      "Non-poisoning deaths: Died in treatment" = 1,
+      "Non-poisoning deaths: Died within a year of discharge" = 1,
+      "Non-poisoning deaths: Died one or more years following discharge" = 3
+    )
+  ) + labs(fill = NULL, x = NULL, y = "Count of deaths", title = "Deaths related to drug misuse")
 
 
 
-p1 +
+
+p1_parts <- 
+  p1 + 
   geom_segment(
     x = 2023.4,
     y = 0,
@@ -166,9 +183,9 @@ p1 +
     "text",
     x = 2023.5,
     y = 1668,
-    label = "Drug poisoning deaths related to drug misuse,as classified in ONS data",
-    hjust = 0,
-    size = 8
+    label = "Drug poisoning deaths related to drug misuse\nas classified in ONS data",
+    hjust = 0
+    
   ) +
   geom_segment(
     x = 2023.4,
@@ -184,7 +201,7 @@ p1 +
     "text",
     x = 2023.5,
     y = 3250 + (936 / 2),
-    label = "Drug poisoning deaths in drug treatment or within a year of leaving treatment but not classified as related to drug misuse in ONS data",
+    label = "Drug poisoning deaths in drug treatment or within a year of\nleaving treatment, but not classified as related to\ndrug misuse in ONS data",
     hjust = 0
   ) +
   geom_segment(
@@ -218,7 +235,7 @@ p1 +
     "text",
     x = 2023.5,
     y = 3250 + 936 + 1386 + (541 / 2),
-    label = "Deaths within a year of leaving treatment with a cause other than poisoning",
+    label = "Deaths within a year of leaving treatment with a cause\nother than poisoning",
     hjust = 0
   ) +
   geom_segment(
@@ -236,27 +253,9 @@ p1 +
     "text",
     x = 2023.5,
     y = 3250 + 936 + 1386 + 541 + (2808 / 2),
-    label = "Deaths a year more after leaving treatment with a cause other than poisoning",
+    label = "Deaths a year more after leaving treatment with\na cause other than poisoning",
     hjust = 0,
     colour = "darkgrey"
-  ) +
-  scale_alpha_manual(
-    values = c(
-      "Initial poisoning deaths" = 1,
-      "Additional poisoning deaths" = 1,
-      "Non-poisoning deaths: Died in treatment" = 1,
-      "Non-poisoning deaths: Died within a year of discharge" = 1,
-      "Non-poisoning deaths: Died one or more years following discharge" = 0.3
-    )
-  ) +
-  scale_linetype_manual(
-    values = c(
-      "Initial poisoning deaths" = 1,
-      "Additional poisoning deaths" = 1,
-      "Non-poisoning deaths: Died in treatment" = 1,
-      "Non-poisoning deaths: Died within a year of discharge" = 1,
-      "Non-poisoning deaths: Died one or more years following discharge" = 3
-    )
   ) +
   geom_segment(
     x = 2023,
@@ -266,5 +265,5 @@ p1 +
   )
 
 
+p1_parts
 
-? showtext.auto()
