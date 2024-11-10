@@ -106,6 +106,8 @@ colnames(pd_national) <- grep(pattern = "treatment_status", colnames(txd_nationa
 drug_deaths_national <- 
   bind_rows(txd_national, pd_national)
 
+write_csv(drug_deaths_national, "data/processed/drug_deaths_national.csv")
+
 
 drug_deaths_national_dc <- # Deaths by death category and year only
 drug_deaths_national %>% 
