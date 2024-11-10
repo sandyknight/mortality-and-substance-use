@@ -1,17 +1,11 @@
-library(tidyverse)
+library(openxlsx)
 library(fedmatch)
+library(tidyverse)
 
+url <- 
+  "https://assets.publishing.service.gov.uk/media/5d8b3d7aed915d0369518030/File_11_-_IoD2019_Local_Authority_District_Summaries__upper-tier__.xlsx"
 
-geo_match <- 
-  read_csv("data/processed/geography_match.csv") |> 
-  mutate(FID = seq(1, 300, 1))
+# TODO again need to this on a laptop with Excel...
 
-txd <- 
-  read_csv("data/processed/tx_deaths_la.csv")
+read.xlsx(url)
 
-
-pd <- 
-  read_csv("data/processed/drug_poisoning_deaths_misuse_la.csv")
-
-
-fedmatch::merge_plus(data1 = txd, data2 = geo_match, by = c("area_name", "area_code"), unique_key_1 = c("period", "area_code"), unique_key_2 = "FID")

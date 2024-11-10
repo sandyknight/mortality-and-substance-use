@@ -97,7 +97,7 @@ txd %>%
 
 txd |> 
   group_by(period, area_code, area_name) |> 
-  select(-agegrp) |> 
+  select(-age) |> 
   summarise(across(where(is.numeric), sum)) |> 
   write_csv("data/processed/tx_deaths_la.csv")
 
