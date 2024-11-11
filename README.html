@@ -352,8 +352,8 @@ display: none;
 </div>
 
 
-<div id="premature-mortality-and-subtstance-use" class="section level1">
-<h1>Premature mortality and subtstance use</h1>
+<div id="premature-mortality-and-substance-use" class="section level1">
+<h1>Premature mortality and substance use</h1>
 <ul>
 <li>Ask 1: What proportion of premature deaths, given a cutoff point
 e.g. 55, are due to drugs and alcohol.<br />
@@ -366,70 +366,78 @@ feasibility first</li>
 </ul>
 <div id="proportion-of-deaths" class="section level2">
 <h2>1. Proportion of deaths</h2>
-<p>Original email instructions from JK:</p>
-<blockquote>
-<p>Is deaths during and after treatment that not poisonings (or alc
-specific) but will be in a large part due to drug or alcohol use. So
-once you have worked out the total number of poisoning deaths</p>
-</blockquote>
-<blockquote>
-<p>Using the data in the toolkit on the beta site can you add in the
-other opiate deaths of other causes not poisoning for those that died in
-treatment in the year you are looking at. Then the same for non-opiates
-and lastly the same for alcohol excluding alc specific deaths that you
-will have got from the alc specific data– you should be able to get the
-age for all of these which is why you need to use the beta site.</p>
-</blockquote>
-<blockquote>
-<p>Can you also then add in the people that have died one year after
-leaving treatment – using the year before and selecting the treatment
-status of one year post (we can assume that these are also all drug and
-alc related being so close to their treatment date)</p>
-</blockquote>
-<blockquote>
-<p>Can you split out each different cohort and component you are adding
-so we can see how much each one adds.</p>
-</blockquote>
-<blockquote>
-<p>Lastly with we will need to then apply similar rates of all cause
-mortality to opiate users outside of treatment but lets do all the above
-first and then discuss.</p>
-</blockquote>
-<p>Latest email instructions from JK:</p>
-<blockquote>
-<p>Morning – this has gone in for the 18th. If possible it would be
-really good to have some of the premature mortality stuff available to
-discuss at the meeting. So could you focus first on updating the work
-that estimates the total number of drug and alcohol deaths by age (with
-drugs separate, alcohol separate and then combined) and then what % of
-total deaths in each age range (and overall under 50) are a result of
-either of the three substance group above.</p>
-</blockquote>
-<blockquote>
-<p>It would also be good to have an overall breakdown of how we have
-arrived at the total number of drug and alcohol deaths. i.e. DRDs + non
-DRD drug users in treatment + non DRDs drugs users left treatment but
-died in the year following etc.</p>
-</blockquote>
-<blockquote>
-<p>Lastly if there is time would be good to have the outputs by
-deprivation</p>
-</blockquote>
-<blockquote>
-<p>Hopefully you have all you need for this but happy to dig out some of
-the original specs if helpful. Let me know.</p>
-</blockquote>
-<blockquote>
-<p>If you can finish this in time then can look at LYL but I think the
-above is probably more useful for that conversation.</p>
-</blockquote>
+<div id="number-of-deaths-associated-with-drug-use" class="section level3">
+<h3>Number of deaths associated with drug use</h3>
+<p>The ONS classifies death related to drug poisoning according ICD-10
+codes. Certain ICD-10 codes classify a death as a “drug misuse death”<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. Each of
+these requires a specific substance (e.g. heroin) or substance category
+(e.g. opioids) to be indicated either in the ICD-10 code or on the death
+certificate.</p>
+<p>There are deaths each year where the ONS holds no information on the
+substance(s) involved:</p>
+<table>
+<colgroup>
+<col width="19%" />
+<col width="14%" />
+<col width="34%" />
+<col width="31%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Year of death registration</th>
+<th align="center">All drug poisonings</th>
+<th align="center">Number of deaths without substance information</th>
+<th align="center">Percentage without substance information</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">2023</td>
+<td align="center">5,448</td>
+<td align="center">1,245</td>
+<td align="center">22.9</td>
+</tr>
+<tr class="even">
+<td align="center">2022</td>
+<td align="center">4,907</td>
+<td align="center">1,239</td>
+<td align="center">25.2</td>
+</tr>
+<tr class="odd">
+<td align="center">2021</td>
+<td align="center">4,859</td>
+<td align="center">1,219</td>
+<td align="center">25.1</td>
+</tr>
+<tr class="even">
+<td align="center">2020</td>
+<td align="center">4,561</td>
+<td align="center">1,050</td>
+<td align="center">23.0</td>
+</tr>
+</tbody>
+</table>
+<p>Some of these will be classified as related to drug misuse where an
+ICD-10 code indicates mental and behavioural disorders due to drug use
+(excluding alcohol and tobacco) without a specific substance (e.g. F19
+“multiple drug use and use of other psychoactive substances”). But
+others, broadly those coded as accidental/intentional self-poisonings or
+self-poisonings of unknown intent, will not be classfified as related to
+drug misuse unless a controlled drug under Misuse of Drugs Act 1971 was
+mentioned on the death record.</p>
+<p>The data linkage between ONS mortality and NDTMS allows some of those
+deaths to be identified indirectly as related to drug misuse where the
+person that died had had contact with the drug treatment system within a
+year of their date of death.</p>
+<hr />
+</div>
 </div>
 <div id="years-of-life-lost-due-to-substance-use" class="section level2">
 <h2>2. Years of life lost due to substance use</h2>
 <p>Years of life lost (YLL) is a measure of the impact of premature
 mortality, helpfully defined by Public Health England <a href="https://fingertips.phe.org.uk/static-reports/health-profile-for-england/definitions-regional.html#years-of-life-lost-yll">here</a></p>
 <p>Chudasama et al. (2022) investigated five methods for estimating
-YLL<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. The
+YLL<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>. The
 first two methods are feasible with the available data for YLL from drug
 use and alcohol specific deaths. Only the drug-related YLL could be
 segmented by geographical estimates of deprivation.</p>
@@ -437,11 +445,11 @@ segmented by geographical estimates of deprivation.</p>
 <div id="mortality-data" class="section level3">
 <h3>Mortality data</h3>
 <ul>
-<li>Deaths related to drug misuse as defined by the ONS<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</li>
+<li>Deaths related to drug misuse as defined by the ONS<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.</li>
 <li>Additional drugs related to drugs misuse that the ONS had
 insufficient data to classify, but can be inferred from the data linkage
 of ONS data with NDTMS data by <a href="https://www.gov.uk/government/publications/ministry-of-justice-better-outcomes-through-linked-data-bold">Better
-Outcomes through Linked data (BOLD)</a> <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.</li>
+Outcomes through Linked data (BOLD)</a> <a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</li>
 <li>Alcohol specific deaths</li>
 </ul>
 </div>
@@ -456,8 +464,14 @@ years of life lost depended on the method used: tutorial and comparative
 investigation. Journal of Clinical Epidemiology, 150, pp. 42-50.
 Available at: <a href="https://doi.org/10.1016/j.jclinepi.2022.06.012" class="uri">https://doi.org/10.1016/j.jclinepi.2022.06.012</a> [Accessed
 6 Nov. 2024].<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p><em>Not publicly available</em><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Chudasama, Y.V., Khunti, K., Gillies, C.L., Dhalwani,
+N.N., Davies, M.J., Yates, T., &amp; Zaccardi, F. (2022). Estimates of
+years of life lost depended on the method used: tutorial and comparative
+investigation. Journal of Clinical Epidemiology, 150, pp. 42-50.
+Available at: <a href="https://doi.org/10.1016/j.jclinepi.2022.06.012" class="uri">https://doi.org/10.1016/j.jclinepi.2022.06.012</a> [Accessed
+6 Nov. 2024].<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
 <li id="fn3"><p><em>Not publicly available</em><a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p><em>Not publicly available</em><a href="#fnref4" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 

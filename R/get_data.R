@@ -7,7 +7,9 @@ library(arrow)
 
 
 
-# Drug poisoning deaths ---------------------------------------------------
+
+# NDTMS data linkage poisoning deaths -------------------------------------
+
 
 if (!file.exists("data/raw/ndtms_mortality_data.parquet")){
   #  This file is NDTMS-ONS data linkage; received by email from Stefan and named:
@@ -21,31 +23,30 @@ if (!file.exists("data/raw/ndtms_mortality_data.parquet")){
 }
 
 
-# dt <- # Deaths from drug misuse & suspected deaths from drug misuse but not recorded as such
-#   dt[(drug_misuse_combined == 0 & Treatment_Status != "no match with NDTMS")| drug_misuse_combined == 1,]
-# 
-# write_parquet(dt, "data/raw/deaths_related_to_misuse_inc_not_rec.parquet")
 
+# ONS published drug poisoning deaths -------------------------------------
 
-# poisoning_deaths_ons <- read_parquet("data/raw/ndtms_mortality_data.parquet")
-# 
-# poisoning_deaths_ons |> 
-#   mutate(ndtms_match = if_else(Treatment_Status == "no match with NDTMS", "Record of contact with treatment system", "No record of contact with treatment system")) |> 
-#   filter(drug_group == "Total Deaths") |> 
-#   mutate(ons_misuse = if_else(drug_misuse_combined == 1, "Recorded as drug misuse by ONS", "Not recorded as drug misuse by ONS")) |> 
-#   group_by(reg_year, ndtms_match, ons_misuse) |> 
-#   summarise(n = n()) |> 
-#   filter(reg_year > 2022) |> 
-#   pivot_wider(names_from = ndtms_match, values_from = n) |> 
-#   ungroup() |> 
-#   select(-reg_year) |> 
-#   janitor::adorn_totals(where = c("row", "col"))
+url <- "https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/deathsrelatedtodrugpoisoningenglandandwalesreferencetable/current/2023registrations.xlsx"
 
+ons_registrations <- openxlsx::read.xlsx(url, sheet = "Table 1", startRow = 4, sep.names = "_", fillMergedCells = TRUE, skipEmptyCols = TRUE, check.names = TRUE) |> 
+  select(1,2,5,9)
 
+colnames(ons_registrations) <- c("sex", "year", "all_drug_poisoning", "drug_misuse")
+
+ons_registrations <- 
+ons_registrations |> 
+  slice(3:100) |> 
+  mutate(sex = zoo::na.locf(sex)) |> 
+  filter(sex == "Persons") |> 
+  as_tibble() |> 
+  filter(!is.na(year))
+
+ons_registrations |> 
+  write_csv("data/processed/published_ons_figures.csv")
 
 # Non-poisoning deaths ----------------------------------------------------
 
-# Data received by email from mailto:Chioma.Amasiatu@dhsc.gov.uk, Mon 08/07/2024 10:28 and named `post election data for Jon- sent.xlsx`
+# Data received by email from mailto Chioma.Amasiatu@dhsc.gov.uk, Mon 08/07/2024 10:28 and named `post election data for Jon- sent.xlsx`
 
 tx_deaths <- 
   openxlsx::read.xlsx("data/raw/post election data for Jon- sent.xlsx", sheet = "NDTMS_ONS") |> 

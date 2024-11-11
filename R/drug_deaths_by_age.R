@@ -80,6 +80,8 @@ data |>
   scale_y_continuous(labels = scales::percent) +
   facet_wrap(~ period)
 
+
+p0 <- 
 data |>
   mutate(p_dr = deaths_related_to_drug_misuse / deaths_all_causes) |>
   ggplot(aes(x = age, y = p_dr)) +
@@ -89,16 +91,26 @@ data |>
   theme_dark() +
   scale_x_continuous(position = "top", n.breaks = 20) +
   theme(
+    text = element_text(colour = "white"),
+    axis.text = element_text(colour = "white"),
+    plot.background = element_rect(fill = "grey29"),
     strip.placement = "outside",
     panel.grid.major.y = element_line(colour = "black"),
     panel.grid.minor = element_blank(),
     panel.grid.major.x = element_blank(),
-    legend.position = "bottom",
+    legend.position = "top",
+    legend.background = element_rect(fill = "grey29"),
     legend.justification = "left",
-    legend.key.width = unit(2, "cm")
+    legend.key.width = unit(2, "cm"),
   ) +
   viridis::scale_fill_viridis(labels = scales::percent) +
-  labs(fill = NULL)
+  labs(fill = NULL, x = NULL,  y = NULL, title = "Deaths associated with drug use as a proportion of all deaths", subtitle = "By single year-of-age")
+
+
+png(filename = "plots/syoa_proportion_plot.png", width = 20, height = 20, unit = "cm", res = 200)
+p0
+dev.off()
+
 
 data |>
   mutate(p_dr = deaths_related_to_drug_misuse / deaths_all_causes) |>

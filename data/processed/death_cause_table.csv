@@ -1,0 +1,27 @@
+treatment_status,death_cause,2022,2023
+Died in treatment,Diseases of the respiratory system,265,320
+Died in treatment,Diseases of the circulatory system,275,294
+Died in treatment,Neoplasms,234,250
+Died in treatment,Other causes,248,232
+Died in treatment,Intentional self-harm,98,111
+Died in treatment,Diseases of the digestive system,96,96
+Died in treatment,Accidental injury,58,52
+Died in treatment,COVID-19,70,31
+Died within a year of discharge,Diseases of the circulatory system,101,115
+Died within a year of discharge,Neoplasms,80,114
+Died within a year of discharge,Other causes,100,96
+Died within a year of discharge,Diseases of the respiratory system,62,64
+Died within a year of discharge,Intentional self-harm,53,64
+Died within a year of discharge,Diseases of the digestive system,37,50
+Died within a year of discharge,Accidental injury,27,21
+Died within a year of discharge,COVID-19,19,17
+Died one or more years following discharge,Diseases of the circulatory system,642,745
+Died one or more years following discharge,Neoplasms,631,707
+Died one or more years following discharge,Diseases of the respiratory system,345,467
+Died one or more years following discharge,Other causes,408,397
+Died one or more years following discharge,Intentional self-harm,188,184
+Died one or more years following discharge,Diseases of the digestive system,198,180
+Died one or more years following discharge,Accidental injury,77,78
+Died one or more years following discharge,COVID-19,115,50
+Poisoning w/ drug misuse,Initial poisoning deaths,2884,3336
+Poisoning w/ drug misuse,Additional poisoning deaths,940,936

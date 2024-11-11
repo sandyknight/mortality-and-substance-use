@@ -6,43 +6,31 @@
 
 ## 1. Proportion of deaths
 
-Original email instructions from JK:
+### Number of deaths associated with drug use 
 
-> Is deaths during and after treatment that not poisonings (or alc specific) but
-> will be in a large part due to drug or alcohol use. So once you have worked out 
-> the total number of poisoning deaths 
+The ONS classifies death related to drug poisoning according ICD-10 codes. Certain ICD-10 codes classify a death as a "drug misuse death"[^1]. Each of these requires a specific substance (e.g. heroin) or substance category (e.g. opioids) to be indicated either in the ICD-10 code or on the death certificate. 
 
-> Using the data in the toolkit on the beta site can you add in the other opiate
-> deaths of other causes not poisoning for those that died in treatment in the 
-> year you are looking at. Then the same for non-opiates and lastly the same for alcohol excluding alc specific deaths that you will have got from the alc specific data– you should be able to get the age for all of these which is why you need to use the beta site. 
+There are deaths each year where the ONS holds no information on the substance(s) involved[1^]:
 
-> Can you also then add in the people that have died one year after leaving 
-> treatment – using the year before and selecting the treatment status of one 
-> year post (we can assume that these are also all drug and alc related being so close to their treatment date) 
-
-> Can you split out each different cohort and component you are adding so we can see how much each one adds. 
-
-> Lastly with we will need to then apply similar rates of all cause mortality to opiate users outside of treatment but lets do all the above first and then discuss. 
-  
-
-Latest email instructions from JK:
-
-> Morning – this has gone in for the 18th. If possible it would be really good 
-> to have some of the premature mortality stuff available to discuss at the meeting.
-> So could you focus first on updating the work that estimates the total number of
-> drug and alcohol deaths by age (with drugs separate, alcohol separate and then 
-> combined) and then what % of total deaths in each age range (and overall under 50) 
-> are a result of either of the three substance group above. 
-
-> It would also be good to have an overall breakdown of how we have arrived at the total number of drug and alcohol deaths. i.e. DRDs + non DRD drug users in treatment + non DRDs drugs users left treatment but died in the year following etc. 
-
-> Lastly if there is time would be good to have the outputs by deprivation
-
-> Hopefully you have all you need for this but happy to dig out some of the original specs if helpful. Let me know. 
-
-> If you can finish this in time then can look at LYL but I think the above is probably more useful for that conversation. 
+| Year of death registration | All drug poisonings | Number of deaths without substance information | Percentage without substance information |
+| :------------------------: | :-----------------: | :--------------------------------------------: | :---------------------------------------: |
+|            2023            |       5,448         |                     1,245                      |                  22.9                     |
+|            2022            |       4,907         |                     1,239                      |                  25.2                     |
+|            2021            |       4,859         |                     1,219                      |                  25.1                     |
+|            2020            |       4,561         |                     1,050                      |                  23.0                     |
 
 
+
+Some of these will be classified as related to drug misuse where an ICD-10 code indicates mental and behavioural disorders due to drug use (excluding alcohol and tobacco) without a specific substance (e.g. F19 "multiple drug use and use of other psychoactive substances"). But others, broadly those coded as accidental/intentional self-poisonings or self-poisonings of unknown intent, will not be classfified as related to drug misuse unless a controlled drug under Misuse of Drugs Act 1971 was mentioned on the death record. 
+
+The data linkage between ONS mortality and NDTMS allows some of those deaths to be identified indirectly as related to drug misuse where the person that died had had contact with the drug treatment system within a year of their date of death. 
+
+
+
+
+[^1]: The criteria for this classification are described in `Box 2` of the `Definition` tab of the latest relese of *Deaths related to drug poisoning, England and Wales* available [here](https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/deathsrelatedtodrugpoisoningenglandandwalesreferencetable).
+[^1]: This is the first four rows of `Table 11` in the same release.
+---
 
 ## 2. Years of life lost due to substance use  
 
