@@ -5,6 +5,9 @@ library(tidyverse)
 library(arrow)
 library(flextable)
 
+# FIXME the total drug misuse figure has to equal the published ONS figure of 3,353
+# for England. 
+
 
 df <- read_parquet("data/raw/ndtms_mortality_data.parquet")
 
@@ -124,16 +127,30 @@ drug_deaths_national <-
   bind_rows(txd_national, pd_national)
 
 
+
 drug_deaths_national <- 
 drug_deaths_national |> 
   ungroup() |> 
-  mutate(treatment_status = if_else(is.na(treatment_status), "Not relevant: poisoning w/ drug misuse", treatment_status)) |> 
-  filter(treatment_status != "Died one or more years following discharge") |> 
-  select(-treatment_status)
+  mutate(treatment_status = if_else(is.na(treatment_status), "Poisoning w/ drug misuse", treatment_status)) #|> 
+  #filter(treatment_status != "Died one or more years following discharge")# |> 
+  #select(-treatment_status)
 
+
+drug_deaths_national |> 
+  group_by(period, treatment_status, death_cause) |> 
+  summarise(count = sum(count)) |> 
+  pivot_wider(names_from = period, values_from = count, values_fill = 0) |> 
+  mutate(treatment_status = factor(treatment_status, levels = c("Died in treatment", "Died within a year of discharge", "Died one or more years following discharge", "Poisoning w/ drug misuse"))) |> 
+  arrange(treatment_status, -`2023`) |> 
+  write_csv("data/processed/death_cause_table.csv")
+  
+
+
+  if (!file.exists("data/processed/drug_deaths_national.csv")){
 write_csv(drug_deaths_national, "data/processed/drug_deaths_national.csv")
+}
 
-
+drug_deaths_national
 drug_deaths_national_dc <- # Deaths by death category and year only
 drug_deaths_national %>% 
   mutate(death_category = case_when(
@@ -143,7 +160,6 @@ drug_deaths_national %>%
   group_by(period, death_category) %>% 
   summarise(count = sum(count)) 
 
-unique(drug_deaths_national_dc$death_category)
 
 drug_deaths_national_dc <- 
 drug_deaths_national_dc %>% 
@@ -292,4 +308,7 @@ p1_parts <-
   )
 
 
+png(filename = "plots/drugs_additional_deaths_broad_cat.png", width = 30, height = 20, unit = "cm", res = 200)
+p1_parts
+dev.off()
 

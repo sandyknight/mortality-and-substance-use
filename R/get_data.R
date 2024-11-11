@@ -6,20 +6,6 @@ library(arrow)
 
 
 
-# IMD ---------------------------------------------------------------------
-
-url <- # UTLA IMD summaries URL
-  "https://assets.publishing.service.gov.uk/media/5d8b3d7aed915d0369518030/File_11_-_IoD2019_Local_Authority_District_Summaries__upper-tier__.xlsx"
-
-imd <-
-read.xlsx(xlsxFile = url, sheet = "IMD") |>
-  janitor::clean_names()
-
-imd |> 
-  select(upper_tier_local_authority_district_code_2019, upper_tier_local_authority_district_name_2019, imd_average_score) |>
-  mutate(imd_decile = ntile(imd_average_score, 10)) |> 
-  write_csv("data/raw/utla_imd_decile.csv")
-
 
 # Drug poisoning deaths ---------------------------------------------------
 

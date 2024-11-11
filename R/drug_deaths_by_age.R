@@ -8,7 +8,7 @@ library(curl)
 
 df <-
   read_csv("data/processed/drug_deaths_national.csv")
-#filter(treatment_status != "Died one or more years following discharge")
+
 
 if (!file.exists("data/raw/ons_deaths_data_2023.xlsx")) {
   url <-
@@ -90,13 +90,14 @@ data |>
   scale_x_continuous(position = "top", n.breaks = 20) +
   theme(
     strip.placement = "outside",
-    panel.grid.major.y = element_line(colour = "grey"),
+    panel.grid.major.y = element_line(colour = "black"),
     panel.grid.minor = element_blank(),
     panel.grid.major.x = element_blank(),
     legend.position = "bottom",
-    legend.justification = "left"
+    legend.justification = "left",
+    legend.key.width = unit(2, "cm")
   ) +
-  viridis::scale_fill_viridis() +
+  viridis::scale_fill_viridis(labels = scales::percent) +
   labs(fill = NULL)
 
 data |>
@@ -125,6 +126,10 @@ function(x) {
 }
 
 
+
+
+
+p1 <- 
 data |> 
   filter(age < 55) |> 
   rowwise() |> 
@@ -153,12 +158,7 @@ data |>
        subtitle = "Average of 2022 and 2023 data"
        )
 
-
-
-
-
-
-
+p2 <- 
 data |> 
   filter(age < 55) |> 
   rowwise() |> 
@@ -183,6 +183,17 @@ data |>
   labs(fill = NULL,
        y = NULL,
        x = "Age group",
-       title = "Deaths related to drug misuse as a proportion of all deaths, by age group",
+       title = "Count of deaths related to drug misuse deaths by all other causes, by age group",
        subtitle = "Average of 2022 and 2023 data"
   )
+
+
+png(filename = "plots/drug_deaths_all_deaths_age_group_proportion.png",width = 20, height = 20, unit = "cm", res = 200)
+p1
+dev.off()
+
+
+png(filename = "plots/drug_deaths_all_deaths_count.png", width = 20, height = 20, unit = "cm", res = 200)
+p2
+dev.off()
+

@@ -15,6 +15,9 @@ TRUE ~ x
 )
 }
 
+
+# `pd` refers to poisoning deaths, `txd` refers to non-poisoning deaths in NDTMS data
+
 gpd <- # Geography columns of poisoning data
   read_parquet("data/raw/ndtms_mortality_data.parquet") %>% 
   janitor::clean_names() %>% 
@@ -33,7 +36,7 @@ gtxd <- # Geography columns of treat deaths data
   mutate(area_name = rplc(area_name)) %>% 
   unique()
 
-gtxd <- 
+gtxd <-  # Geography columns only for NDTMS deaths 
 gtxd %>% 
   mutate(gss_name = area_name)
 
@@ -80,4 +83,6 @@ fedmatch::merge_plus(
   unique_key_1 = "uid" ,
   unique_key_2 = "FID"
 )
+
+
 
