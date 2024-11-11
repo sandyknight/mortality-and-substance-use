@@ -1,303 +1,303 @@
 reg_year,dat,dat_nm,count
 2022,00EQ,Cheshire East UA,15
 2022,00EW,Cheshire West and Chester UA,22
-2022,00KB,Bedford UA,11
-2022,00KC,Central Bedfordshire UA,7
+2022,00KB,Bedford UA,10
+2022,00KC,Central Bedfordshire UA,8
 2022,A01B,Darlington,10
-2022,A02B,County Durham,52
-2022,A03B,Hartlepool,6
-2022,A04B,Redcar and Cleveland,10
-2022,A05B,Middlesbrough,20
-2022,A06B,Stockton-On-Tees,15
-2022,A07B,Newcastle upon Tyne,38
-2022,A08B,North Tyneside,22
-2022,A09B,Gateshead,24
-2022,A10B,Northumberland,20
-2022,A11B,South Tyneside,9
-2022,A12B,Sunderland,28
-2022,B01B,Salford,28
-2022,B02B,Trafford,19
-2022,B03B,Blackburn with Darwen,6
-2022,B04B,Blackpool,36
-2022,B05B,Lancashire,83
-2022,B06B,Wirral,42
-2022,B07B,Warrington,10
-2022,B08B,Halton,10
+2022,A02B,County Durham,54
+2022,A03B,Hartlepool,9
+2022,A04B,Redcar and Cleveland,16
+2022,A05B,Middlesbrough,23
+2022,A06B,Stockton-On-Tees,24
+2022,A07B,Newcastle upon Tyne,42
+2022,A08B,North Tyneside,21
+2022,A09B,Gateshead,25
+2022,A10B,Northumberland,14
+2022,A11B,South Tyneside,10
+2022,A12B,Sunderland,26
+2022,B01B,Salford,26
+2022,B02B,Trafford,21
+2022,B03B,Blackburn with Darwen,13
+2022,B04B,Blackpool,39
+2022,B05B,Lancashire,98
+2022,B06B,Wirral,40
+2022,B07B,Warrington,11
+2022,B08B,Halton,9
 2022,B09B,Rochdale,16
-2022,B10B,St Helens,21
-2022,B11B,Knowsley,25
-2022,B12B,Tameside,32
+2022,B10B,St Helens,24
+2022,B11B,Knowsley,21
+2022,B12B,Tameside,35
 2022,B13B,Oldham,17
-2022,B14B,Bolton,34
-2022,B15B,Bury,19
-2022,B16B,Cumbria,55
-2022,B17B,Liverpool,71
-2022,B18B,Manchester,62
-2022,B19B,Sefton,30
-2022,B21B,Stockport,40
-2022,B22B,Wigan,29
-2022,D01B,Kingston upon Hull,35
-2022,D02B,East Riding of Yorkshire,17
-2022,D03B,Calderdale,22
-2022,D04B,Kirklees,27
+2022,B14B,Bolton,32
+2022,B15B,Bury,17
+2022,B16B,Cumbria,53
+2022,B17B,Liverpool,69
+2022,B18B,Manchester,55
+2022,B19B,Sefton,31
+2022,B21B,Stockport,31
+2022,B22B,Wigan,34
+2022,D01B,Kingston upon Hull,52
+2022,D02B,East Riding of Yorkshire,15
+2022,D03B,Calderdale,20
+2022,D04B,Kirklees,24
 2022,D06B,York,15
-2022,D07B,North Lincolnshire,7
-2022,D08B,North East Lincolnshire,11
-2022,D09B,Barnsley,28
-2022,D10B,Wakefield,59
-2022,D11B,Sheffield,40
-2022,D12B,Leeds,71
-2022,D13B,Bradford,42
+2022,D07B,North Lincolnshire,6
+2022,D08B,North East Lincolnshire,13
+2022,D09B,Barnsley,39
+2022,D10B,Wakefield,55
+2022,D11B,Sheffield,42
+2022,D12B,Leeds,70
+2022,D13B,Bradford,36
 2022,D14B,Doncaster,41
-2022,D15B,Rotherham,26
-2022,D16B,North Yorkshire,43
-2022,E01B,Leicestershire,41
-2022,E02B,Leicester,27
-2022,E03B,Rutland,2
-2022,E04B,Derbyshire,71
-2022,E05B,Derby,30
-2022,E06B,Nottinghamshire,49
-2022,E07B,Nottingham,25
-2022,E08B,Lincolnshire,50
-2022,E10B,North Northamptonshire,20
-2022,E11B,North Northamptonshire,21
-2022,F01B,Shropshire,14
-2022,F02B,Telford and Wrekin,20
-2022,F03B,Staffordshire,45
-2022,F04B,Stoke-on-Trent,23
-2022,F05B,Birmingham,97
+2022,D15B,Rotherham,24
+2022,D16B,North Yorkshire,45
+2022,E01B,Leicestershire,31
+2022,E02B,Leicester,22
+2022,E03B,Rutland,4
+2022,E04B,Derbyshire,67
+2022,E05B,Derby,23
+2022,E06B,Nottinghamshire,53
+2022,E07B,Nottingham,24
+2022,E08B,Lincolnshire,44
+2022,E10B,North Northamptonshire,15
+2022,E11B,North Northamptonshire,17
+2022,F01B,Shropshire,16
+2022,F02B,Telford and Wrekin,14
+2022,F03B,Staffordshire,37
+2022,F04B,Stoke-on-Trent,22
+2022,F05B,Birmingham,92
 2022,F06B,Coventry,21
-2022,F07B,Dudley,12
-2022,F08B,Herefordshire,12
-2022,F09B,Sandwell,12
+2022,F07B,Dudley,9
+2022,F08B,Herefordshire,10
+2022,F09B,Sandwell,10
 2022,F10B,Solihull,9
-2022,F11B,Walsall,21
-2022,F12B,Warwickshire,26
-2022,F13B,Wolverhampton,17
-2022,F14B,Worcestershire,27
-2022,G02B,Luton,12
-2022,G03B,Cambridgeshire,39
-2022,G04B,Peterborough,16
-2022,G05B,Essex,62
+2022,F11B,Walsall,18
+2022,F12B,Warwickshire,21
+2022,F13B,Wolverhampton,18
+2022,F14B,Worcestershire,26
+2022,G02B,Luton,16
+2022,G03B,Cambridgeshire,32
+2022,G04B,Peterborough,14
+2022,G05B,Essex,57
 2022,G06B,Southend-on-Sea,8
-2022,G07B,Thurrock,6
-2022,G08B,Hertfordshire,52
-2022,G09B,Norfolk,70
-2022,G10B,Suffolk,43
+2022,G07B,Thurrock,7
+2022,G08B,Hertfordshire,37
+2022,G09B,Norfolk,64
+2022,G10B,Suffolk,41
 2022,H01B,Barking and Dagenham,10
-2022,H02B,Havering,16
-2022,H03B,Camden,24
-2022,H04B,Islington,25
-2022,H05B,City of London,1
+2022,H02B,Havering,10
+2022,H03B,Camden,17
+2022,H04B,Islington,24
+2022,H05B,City of London,2
 2022,H06B,Hackney,18
-2022,H07B,Lambeth,27
-2022,H08B,Lewisham,18
+2022,H07B,Lambeth,23
+2022,H08B,Lewisham,17
 2022,H09B,Southwark,22
-2022,H10B,Redbridge,11
-2022,H11B,Waltham Forest,9
-2022,H12B,Barnet,6
-2022,H13B,Bexley,7
-2022,H14B,Brent,16
-2022,H15B,Bromley,15
-2022,H16B,Croydon,12
-2022,H17B,Ealing,20
-2022,H18B,Enfield,13
-2022,H19B,Greenwich,13
+2022,H10B,Redbridge,8
+2022,H11B,Waltham Forest,7
+2022,H12B,Barnet,4
+2022,H13B,Bexley,5
+2022,H14B,Brent,15
+2022,H15B,Bromley,16
+2022,H16B,Croydon,15
+2022,H17B,Ealing,17
+2022,H18B,Enfield,10
+2022,H19B,Greenwich,14
 2022,H20B,Hammersmith and Fulham,9
-2022,H21B,Haringey,15
-2022,H22B,Kensington and Chelsea,10
-2022,H23B,Kingston upon Thames,4
+2022,H21B,Haringey,14
+2022,H22B,Kensington and Chelsea,9
+2022,H23B,Kingston upon Thames,5
 2022,H24B,Merton,4
-2022,H25B,Newham,15
-2022,H26B,Richmond upon Thames,5
+2022,H25B,Newham,13
+2022,H26B,Richmond upon Thames,8
 2022,H27B,Sutton,12
-2022,H28B,Tower Hamlets,10
-2022,H29B,Wandsworth,10
-2022,H30B,Westminster,13
-2022,H31B,Harrow,9
-2022,H32B,Hillingdon,15
-2022,H33B,Hounslow,10
-2022,J01B,Bracknell Forest,3
-2022,J02B,Reading,15
-2022,J03B,Slough,6
+2022,H28B,Tower Hamlets,12
+2022,H29B,Wandsworth,6
+2022,H30B,Westminster,14
+2022,H31B,Harrow,5
+2022,H32B,Hillingdon,14
+2022,H33B,Hounslow,9
+2022,J01B,Bracknell Forest,1
+2022,J02B,Reading,12
+2022,J03B,Slough,7
 2022,J04B,West Berkshire,6
-2022,J05B,Windsor and Maidenhead,3
-2022,J06B,Wokingham,10
-2022,J08B,Milton Keynes,23
-2022,J09B,Oxfordshire,34
-2022,J10B,Brighton and Hove,42
-2022,J11B,East Sussex,39
-2022,J12B,West Sussex,48
-2022,J13B,Kent,111
-2022,J14B,Medway,25
-2022,J15B,Hampshire,77
-2022,J16B,Portsmouth,23
-2022,J17B,Southampton,17
-2022,J18B,Isle of Wight,10
-2022,J19B,Surrey,40
-2022,J20B,Buckinghamshire,19
-2022,K01B,Bath and North East Somerset,8
-2022,K02B,Bristol,52
+2022,J05B,Windsor and Maidenhead,2
+2022,J06B,Wokingham,8
+2022,J08B,Milton Keynes,21
+2022,J09B,Oxfordshire,30
+2022,J10B,Brighton and Hove,39
+2022,J11B,East Sussex,33
+2022,J12B,West Sussex,36
+2022,J13B,Kent,86
+2022,J14B,Medway,23
+2022,J15B,Hampshire,65
+2022,J16B,Portsmouth,17
+2022,J17B,Southampton,16
+2022,J18B,Isle of Wight,8
+2022,J19B,Surrey,32
+2022,J20B,Buckinghamshire,17
+2022,K01B,Bath and North East Somerset,9
+2022,K02B,Bristol,42
 2022,K03B,South Gloucestershire,11
 2022,K04B,North Somerset,8
-2022,K08B,Devon,63
-2022,K09B,Plymouth,25
-2022,K10B,Torbay,8
-2022,K11B,Swindon,11
+2022,K08B,Devon,53
+2022,K09B,Plymouth,23
+2022,K10B,Torbay,7
+2022,K11B,Swindon,10
 2022,K12B,Wiltshire,15
-2022,K13B,Cornwall & Isles of Scilly,46
-2022,K14B,Gloucestershire,36
-2022,K16B,"Bournemouth, Christchurch and Poole",37
-2022,K17B,Dorset,23
-2022,K18B,Somerset,28
-2023,00EQ,Cheshire East UA,35
-2023,00EW,Cheshire West and Chester UA,21
-2023,00KB,Bedford UA,7
+2022,K13B,Cornwall & Isles of Scilly,41
+2022,K14B,Gloucestershire,32
+2022,K16B,"Bournemouth, Christchurch and Poole",40
+2022,K17B,Dorset,20
+2022,K18B,Somerset,23
+2023,00EQ,Cheshire East UA,30
+2023,00EW,Cheshire West and Chester UA,22
+2023,00KB,Bedford UA,5
 2023,00KC,Central Bedfordshire UA,8
 2023,A01B,Darlington,10
-2023,A02B,County Durham,65
-2023,A03B,Hartlepool,10
-2023,A04B,Redcar and Cleveland,24
-2023,A05B,Middlesbrough,20
-2023,A06B,Stockton-On-Tees,23
-2023,A07B,Newcastle upon Tyne,39
+2023,A02B,County Durham,60
+2023,A03B,Hartlepool,11
+2023,A04B,Redcar and Cleveland,32
+2023,A05B,Middlesbrough,40
+2023,A06B,Stockton-On-Tees,22
+2023,A07B,Newcastle upon Tyne,31
 2023,A08B,North Tyneside,31
-2023,A09B,Gateshead,32
-2023,A10B,Northumberland,41
-2023,A11B,South Tyneside,22
-2023,A12B,Sunderland,39
-2023,B01B,Salford,18
-2023,B02B,Trafford,17
-2023,B03B,Blackburn with Darwen,8
-2023,B04B,Blackpool,36
-2023,B05B,Lancashire,92
+2023,A09B,Gateshead,33
+2023,A10B,Northumberland,37
+2023,A11B,South Tyneside,19
+2023,A12B,Sunderland,32
+2023,B01B,Salford,17
+2023,B02B,Trafford,13
+2023,B03B,Blackburn with Darwen,13
+2023,B04B,Blackpool,44
+2023,B05B,Lancashire,114
 2023,B06B,Wirral,40
-2023,B07B,Warrington,10
+2023,B07B,Warrington,12
 2023,B08B,Halton,11
-2023,B09B,Rochdale,19
-2023,B10B,St Helens,24
-2023,B11B,Knowsley,16
-2023,B12B,Tameside,17
-2023,B13B,Oldham,15
-2023,B14B,Bolton,28
-2023,B15B,Bury,17
-2023,B17B,Liverpool,68
-2023,B18B,Manchester,76
-2023,B19B,Sefton,28
-2023,B21B,Stockport,26
-2023,B22B,Wigan,31
-2023,B23B,Cumberland,36
-2023,B24B,Westmorland and Furness,33
-2023,D01B,Kingston upon Hull,32
+2023,B09B,Rochdale,18
+2023,B10B,St Helens,23
+2023,B11B,Knowsley,14
+2023,B12B,Tameside,21
+2023,B13B,Oldham,16
+2023,B14B,Bolton,31
+2023,B15B,Bury,18
+2023,B17B,Liverpool,67
+2023,B18B,Manchester,71
+2023,B19B,Sefton,29
+2023,B21B,Stockport,25
+2023,B22B,Wigan,37
+2023,B23B,Cumberland,61
+2023,B24B,Westmorland and Furness,28
+2023,D01B,Kingston upon Hull,38
 2023,D02B,East Riding of Yorkshire,14
 2023,D03B,Calderdale,25
-2023,D04B,Kirklees,36
+2023,D04B,Kirklees,30
 2023,D06B,York,19
-2023,D07B,North Lincolnshire,9
-2023,D08B,North East Lincolnshire,10
-2023,D09B,Barnsley,28
-2023,D10B,Wakefield,37
-2023,D11B,Sheffield,58
-2023,D12B,Leeds,79
-2023,D13B,Bradford,63
-2023,D14B,Doncaster,35
-2023,D15B,Rotherham,30
-2023,D16B,North Yorkshire,59
-2023,E01B,Leicestershire,40
-2023,E02B,Leicester,25
-2023,E03B,Rutland,2
-2023,E04B,Derbyshire,66
-2023,E05B,Derby,20
-2023,E06B,Nottinghamshire,47
-2023,E07B,Nottingham,35
+2023,D07B,North Lincolnshire,8
+2023,D08B,North East Lincolnshire,12
+2023,D09B,Barnsley,27
+2023,D10B,Wakefield,34
+2023,D11B,Sheffield,53
+2023,D12B,Leeds,73
+2023,D13B,Bradford,61
+2023,D14B,Doncaster,36
+2023,D15B,Rotherham,28
+2023,D16B,North Yorkshire,48
+2023,E01B,Leicestershire,33
+2023,E02B,Leicester,23
+2023,E03B,Rutland,1
+2023,E04B,Derbyshire,61
+2023,E05B,Derby,23
+2023,E06B,Nottinghamshire,62
+2023,E07B,Nottingham,41
 2023,E08B,Lincolnshire,64
-2023,E10B,North Northamptonshire,26
-2023,E11B,North Northamptonshire,32
-2023,F01B,Shropshire,15
-2023,F02B,Telford and Wrekin,11
-2023,F03B,Staffordshire,45
-2023,F04B,Stoke-on-Trent,15
-2023,F05B,Birmingham,142
-2023,F06B,Coventry,35
-2023,F07B,Dudley,20
-2023,F08B,Herefordshire,16
-2023,F09B,Sandwell,13
+2023,E10B,North Northamptonshire,19
+2023,E11B,North Northamptonshire,29
+2023,F01B,Shropshire,14
+2023,F02B,Telford and Wrekin,12
+2023,F03B,Staffordshire,35
+2023,F04B,Stoke-on-Trent,14
+2023,F05B,Birmingham,136
+2023,F06B,Coventry,30
+2023,F07B,Dudley,17
+2023,F08B,Herefordshire,14
+2023,F09B,Sandwell,9
 2023,F10B,Solihull,9
 2023,F11B,Walsall,19
-2023,F12B,Warwickshire,48
-2023,F13B,Wolverhampton,32
-2023,F14B,Worcestershire,47
-2023,G02B,Luton,13
-2023,G03B,Cambridgeshire,42
-2023,G04B,Peterborough,22
-2023,G05B,Essex,98
-2023,G06B,Southend-on-Sea,18
-2023,G07B,Thurrock,5
-2023,G08B,Hertfordshire,64
-2023,G09B,Norfolk,51
-2023,G10B,Suffolk,39
-2023,H01B,Barking and Dagenham,8
-2023,H02B,Havering,13
-2023,H03B,Camden,14
-2023,H04B,Islington,13
-2023,H06B,Hackney,24
-2023,H07B,Lambeth,19
-2023,H08B,Lewisham,22
-2023,H09B,Southwark,25
-2023,H10B,Redbridge,12
+2023,F12B,Warwickshire,42
+2023,F13B,Wolverhampton,33
+2023,F14B,Worcestershire,41
+2023,G02B,Luton,12
+2023,G03B,Cambridgeshire,30
+2023,G04B,Peterborough,23
+2023,G05B,Essex,87
+2023,G06B,Southend-on-Sea,19
+2023,G07B,Thurrock,7
+2023,G08B,Hertfordshire,55
+2023,G09B,Norfolk,61
+2023,G10B,Suffolk,37
+2023,H01B,Barking and Dagenham,10
+2023,H02B,Havering,10
+2023,H03B,Camden,16
+2023,H04B,Islington,15
+2023,H06B,Hackney,22
+2023,H07B,Lambeth,22
+2023,H08B,Lewisham,19
+2023,H09B,Southwark,23
+2023,H10B,Redbridge,10
 2023,H11B,Waltham Forest,11
 2023,H12B,Barnet,13
-2023,H13B,Bexley,7
-2023,H14B,Brent,15
-2023,H15B,Bromley,24
-2023,H16B,Croydon,15
-2023,H17B,Ealing,21
-2023,H18B,Enfield,11
-2023,H19B,Greenwich,10
-2023,H20B,Hammersmith and Fulham,13
-2023,H21B,Haringey,23
-2023,H22B,Kensington and Chelsea,10
+2023,H13B,Bexley,9
+2023,H14B,Brent,16
+2023,H15B,Bromley,15
+2023,H16B,Croydon,14
+2023,H17B,Ealing,19
+2023,H18B,Enfield,8
+2023,H19B,Greenwich,6
+2023,H20B,Hammersmith and Fulham,12
+2023,H21B,Haringey,22
+2023,H22B,Kensington and Chelsea,7
 2023,H23B,Kingston upon Thames,8
-2023,H24B,Merton,7
-2023,H25B,Newham,12
+2023,H24B,Merton,8
+2023,H25B,Newham,11
 2023,H26B,Richmond upon Thames,6
 2023,H27B,Sutton,14
-2023,H28B,Tower Hamlets,15
-2023,H29B,Wandsworth,20
-2023,H30B,Westminster,8
-2023,H31B,Harrow,6
-2023,H32B,Hillingdon,14
-2023,H33B,Hounslow,9
+2023,H28B,Tower Hamlets,16
+2023,H29B,Wandsworth,18
+2023,H30B,Westminster,10
+2023,H31B,Harrow,5
+2023,H32B,Hillingdon,13
+2023,H33B,Hounslow,8
 2023,J01B,Bracknell Forest,12
-2023,J02B,Reading,12
+2023,J02B,Reading,9
 2023,J03B,Slough,12
-2023,J04B,West Berkshire,8
-2023,J05B,Windsor and Maidenhead,2
-2023,J06B,Wokingham,8
+2023,J04B,West Berkshire,6
+2023,J05B,Windsor and Maidenhead,1
+2023,J06B,Wokingham,6
 2023,J08B,Milton Keynes,16
-2023,J09B,Oxfordshire,23
-2023,J10B,Brighton and Hove,43
-2023,J11B,East Sussex,40
-2023,J12B,West Sussex,49
-2023,J13B,Kent,89
-2023,J14B,Medway,26
-2023,J15B,Hampshire,70
-2023,J16B,Portsmouth,22
+2023,J09B,Oxfordshire,22
+2023,J10B,Brighton and Hove,37
+2023,J11B,East Sussex,34
+2023,J12B,West Sussex,42
+2023,J13B,Kent,85
+2023,J14B,Medway,21
+2023,J15B,Hampshire,54
+2023,J16B,Portsmouth,21
 2023,J17B,Southampton,13
 2023,J18B,Isle of Wight,11
-2023,J19B,Surrey,59
-2023,J20B,Buckinghamshire,32
-2023,K01B,Bath and North East Somerset,21
-2023,K02B,Bristol,57
-2023,K03B,South Gloucestershire,14
-2023,K04B,North Somerset,19
-2023,K08B,Devon,67
-2023,K09B,Plymouth,18
-2023,K10B,Torbay,11
+2023,J19B,Surrey,49
+2023,J20B,Buckinghamshire,25
+2023,K01B,Bath and North East Somerset,19
+2023,K02B,Bristol,54
+2023,K03B,South Gloucestershire,9
+2023,K04B,North Somerset,14
+2023,K08B,Devon,53
+2023,K09B,Plymouth,19
+2023,K10B,Torbay,10
 2023,K11B,Swindon,6
-2023,K12B,Wiltshire,31
-2023,K13B,Cornwall & Isles of Scilly,65
-2023,K14B,Gloucestershire,48
-2023,K16B,"Bournemouth, Christchurch and Poole",59
+2023,K12B,Wiltshire,25
+2023,K13B,Cornwall & Isles of Scilly,56
+2023,K14B,Gloucestershire,41
+2023,K16B,"Bournemouth, Christchurch and Poole",57
 2023,K17B,Dorset,25
-2023,K18B,Somerset,39
+2023,K18B,Somerset,43

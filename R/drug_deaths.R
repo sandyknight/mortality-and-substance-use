@@ -9,6 +9,13 @@ library(flextable)    # Creates flexible tables for reporting
 # Load the dataset from a Parquet file
 df <- read_parquet("data/raw/ndtms_mortality_data.parquet")
 
+df
+
+df |> 
+  select(Treatment_Status) |> 
+  unique() |> 
+  write_csv("tx_statuses.csv")
+
 # Generate a summarized dataset with custom groupings and filters
 demo_sus_drd_method <- 
   arrow_table(df) %>%
@@ -16,8 +23,8 @@ demo_sus_drd_method <-
     # Check if there was contact with treatment and categorize accordingly
     ndtms_match = if_else(
       Treatment_Status == "no match with NDTMS",
-      "Record of contact with treatment system",
-      "No record of contact with treatment system"
+      "No record of contact with treatment system",
+      "Record of contact with treatment system"
     )
   ) |>
   filter(drug_group == "Total Deaths") |>
@@ -48,7 +55,7 @@ demo_sus_drd_method %>%
 # Filter dataset for drug misuse or lack of treatment match, with additional categorization
 df <- 
   arrow_table(df) %>% 
-  filter(drug_misuse_combined == 1 | (drug_misuse_combined == 0 & Treatment_Status == "no match with NDTMS")) %>% 
+  filter(drug_misuse_combined == 1 | (drug_misuse_combined == 0 & Treatment_Status != "no match with NDTMS")) %>% 
   mutate(additional_poisoning_death = if_else(drug_misuse_combined == 1, "Initial poisoning deaths", "Additional poisoning deaths")) %>% 
   collect()
 
@@ -152,6 +159,8 @@ drug_deaths_national |>
   facet_wrap(~period, nrow = 2) + 
   coord_flip()
 
+
+p0 <- 
 drug_deaths_national |>
   group_by(period, treatment_status, death_cause) |>
   summarise(count = sum(count)) |>
@@ -164,9 +173,14 @@ drug_deaths_national |>
   ggplot(aes(x = death_cause, y = count, fill = period)) +
   geom_col( position= "dodge", alpha = 0.8, colour = "black") +
   coord_flip() + 
-  scale_fill_lancet()
+  scale_fill_lancet() + 
+  scale_y_continuous(labels = scales::comma) + 
+  labs(title = "Count of causes of death in cohort", x = "Cause of death", y = "Count of deaths", fill = "") + 
+  theme(legend.position = "bottom", legend.justification = "left")
 
-
+png(filename = "plots/causes_of_death.png", width = 30, height = 20, unit = "cm", res = 200)
+p0
+dev.off()
 
 # Filter deaths by category (e.g., "poisoning") for plotting
 drug_deaths_national_dc <- 
@@ -252,7 +266,7 @@ p1_parts <-
   geom_segment(x = 2023.4, y = 0, yend = 3265, arrow = arrow(ends = "both", angle = 90, length = unit(.2, "cm"))) +
   annotate("text", x = 2023.5, y = 1668, label = "Drug poisoning deaths related to drug misuse\nas classified in ONS data", hjust = 0) +
   geom_segment(x = 2023.4, y = 3353, yend = 3265 + 936, arrow = arrow(ends = "both", angle = 90, length = unit(.2, "cm"))) +
-  annotate("text", x = 2023.5, y = 3265 + (936 / 2), label = "Drug poisoning deaths in drug treatment or within a year of\nleaving treatment, but not classified as related to\ndrug misuse in ONS data", hjust = 0) +
+  annotate("text", x = 2023.5, y = 3265 + (936 / 2), label = "Drug poisoning deaths with contact with treatment system\nbut not classified as related to drug misuse in ONS data", hjust = 0) +
   geom_segment(x = 2023.4, y = 3353 + 930, yend = 3265 + 936 + 1386, arrow = arrow(ends = "both", angle = 90, length = unit(.2, "cm"))) +
   annotate("text", x = 2023.5, y = 3265 + 936 + (1386 / 2), label = "Deaths in treatment with a cause other than poisoning", hjust = 0) +
   geom_segment(x = 2023.4, y = 3353 + 930 + 1380, yend = 3265 + 936 + 1386 + 541, arrow = arrow(ends = "both", angle = 90, length = unit(.2, "cm"))) +
