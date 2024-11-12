@@ -1,0 +1,50 @@
+age_group,icd_10_code,leading_cause,deaths,percentage_of_all_deaths_percent
+All ages,"F01, F03, G30",Dementia and Alzheimers disease,62118,0.115
+All ages,I20-I25,Ischaemic heart diseases,55196,0.10300000000000001
+All ages,J40-J47,Chronic lower respiratory diseases,27686,0.051
+All ages,I60-I69,Cerebrovascular diseases,27458,0.051
+All ages,C33-C34,"Malignant neoplasm of trachea, bronchus and lung",26718,0.05
+All ages,"U07.1, U07.2, U10.9",COVID-19,21060,0.039
+1 to 4 years,Q00-Q99,"Congenital malformations, deformations and chromosomal abnormalities",54,0.15
+1 to 4 years,R00-R99,"Symptoms, signs and ill-defined conditions",25,0.069
+1 to 4 years,C81-C96,"Malignant neoplasms of lymphoid, haematopoietic and related tissue",21,0.057999999999999996
+1 to 4 years,"U50.9, X85-Y09, Y87.1",Homicide and probable homicide,20,0.055
+1 to 4 years,I42,Cardiomyopathy,13,0.036000000000000004
+1 to 4 years,A40-A41,Septicaemia,10,0.027999999999999997
+1 to 4 years,C71,Malignant neoplasm of brain,9,0.025
+1 to 4 years,D00-D48,"In situ and benign neoplasms, and neoplasms of uncertain or unknown behaviour",9,0.025
+1 to 4 years,V01-V89,Land transport accidents,9,0.025
+1 to 4 years,W65-W74,Accidental drowning and submersion,9,0.025
+5 to 19 years,"X60-X84, Y10-Y34",Intentional self-harm and event of undetermined intent,193,0.141
+5 to 19 years,Q00-Q99,"Congenital malformations, deformations and chromosomal abnormalities",108,0.079
+5 to 19 years,V01-V89,Land transport accidents,104,0.076
+5 to 19 years,"U50.9, X85-Y09, Y87.1",Homicide and probable homicide,85,0.062
+5 to 19 years,C71,Malignant neoplasm of brain,73,0.053
+20 to 34 years,"X60-X84, Y10-Y34",Intentional self-harm and event of undetermined intent,1289,0.235
+20 to 34 years,X40-X49,Accidental poisoning,719,0.131
+20 to 34 years,V01-V89,Land transport accidents,332,0.061
+20 to 34 years,"U50.9, X85-Y09, Y87.1",Homicide and probable homicide,204,0.037000000000000005
+20 to 34 years,K70-K76,Cirrhosis and other diseases of liver,194,0.035
+35 to 49 years,X40-X49,Accidental poisoning,1841,0.111
+35 to 49 years,K70-K76,Cirrhosis and other diseases of liver,1707,0.10300000000000001
+35 to 49 years,"X60-X84, Y10-Y34",Intentional self-harm and event of undetermined intent,1516,0.091
+35 to 49 years,I20-I25,Ischaemic heart diseases,1358,0.08199999999999999
+35 to 49 years,C50,Malignant neoplasm of breast,707,0.043
+50 to 64 years,I20-I25,Ischaemic heart diseases,7972,0.139
+50 to 64 years,C33-C34,"Malignant neoplasm of trachea, bronchus and lung",4086,0.071
+50 to 64 years,K70-K76,Cirrhosis and other diseases of liver,3883,0.068
+50 to 64 years,J40-J47,Chronic lower respiratory diseases,2538,0.044000000000000004
+50 to 64 years,C18-C21,"Malignant neoplasm of colon, sigmoid, rectum and anus",2285,0.04
+50 to 64 years,C50,Malignant neoplasm of breast,2018,0.035
+50 to 64 years,I60-I69,Cerebrovascular diseases,1962,0.034
+65 to 79 years,I20-I25,Ischaemic heart diseases,19420,0.12300000000000001
+65 to 79 years,C33-C34,"Malignant neoplasm of trachea, bronchus and lung",13376,0.085
+65 to 79 years,J40-J47,Chronic lower respiratory diseases,11613,0.073
+65 to 79 years,"F01, F03, G30",Dementia and Alzheimers disease,8318,0.053
+65 to 79 years,I60-I69,Cerebrovascular diseases,7231,0.046
+65 to 79 years,C18-C21,"Malignant neoplasm of colon, sigmoid, rectum and anus",5370,0.034
+80 years and over,"F01, F03, G30",Dementia and Alzheimers disease,53488,0.179
+80 years and over,I20-I25,Ischaemic heart diseases,26322,0.08800000000000001
+80 years and over,I60-I69,Cerebrovascular diseases,17620,0.059000000000000004
+80 years and over,R00-R99,"Symptoms, signs and ill-defined conditions",16390,0.055
+80 years and over,"U07.1, U07.2, U10.9",COVID-19,13802,0.046
