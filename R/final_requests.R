@@ -7,8 +7,7 @@ library(flextable)
 
 source("R/drug_deaths_functions.R")
 source("R/plotting_functions.R")
-source("R/themes.R")
-source("R/dhsc_colour_palette.R")
+
 
 drug_poisoning_deaths_file <-
   "data/raw/ndtms_mortality_data.parquet"
@@ -25,7 +24,8 @@ national_data <-
       years = 2022,
       exclude_poisoning = TRUE,
       by_treatment_status = TRUE,
-      by_death_cause = FALSE
+      by_death_cause = FALSE,
+      exclude_alcohol_specific_deaths = TRUE
     )
   )
 
@@ -36,11 +36,11 @@ p1 <- plot_national_data(plot_data = national_data)
 
 p1 <- add_plot_annotations(plot = p1, data = national_data)
 
-data_list <- list()
-
+png(filename = "plots/plot_1.png", height = 11.72,  width = 23.44, units = "cm", res = 200)
+p1
+dev.off()
 data_list[["plot_1"]] <- national_data
 
-data_list
 
 
 # Plot 2 ------------------------------------------------------------------

@@ -1,3 +1,6 @@
+source("R/themes.R")
+source("R/dhsc_colour_palette.R")
+
 # Function to create the plot
 plot_national_data <- function(plot_data) {
   ttl <- 
@@ -59,7 +62,7 @@ plot_national_data <- function(plot_data) {
       fill = NULL, 
       x = NULL, 
       y = "Count of deaths", 
-      title = "Deaths Related to Drug Misuse"
+      title = "Deaths associated with drug misuse"
     )
 }
 
@@ -85,7 +88,7 @@ add_plot_annotations <- function(plot, data) {
   # Create a mapping of death categories to labels
   labels <- c(
     "Initial poisoning deaths" = "Drug poisoning deaths related to drug misuse\nas classified in ONS data",
-    "Additional poisoning deaths" = "Drug poisoning deaths in treatment or within a year of leaving\nbut not classified as related to drug misuse by ONS",
+    "Additional poisoning deaths" = "Drug poisoning deaths with a record of treatment\nbut not classified as related to drug misuse by ONS",
     "Non-poisoning deaths: Died in treatment" = "Deaths in treatment with a cause other than poisoning",
     "Non-poisoning deaths: Died within a year of discharge" = "Deaths within a year of leaving treatment with a cause\nother than poisoning",
     "Non-poisoning deaths: Died one or more years following discharge" = "Deaths a year or more after leaving treatment with a cause\nother than poisoning"

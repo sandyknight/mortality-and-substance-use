@@ -84,23 +84,44 @@ rm(la_count);rm(england_count)
 tx_deaths %>% 
   write_parquet("data/raw/tx_deaths_la_2122_2223.parquet")
 
-tx_deaths |> 
-  filter(period_range == "April 2022 to March 2023") |> 
-  filter(death_cause != "Drug poisoning") |> 
-  filter(death_cause != "Alcohol-specific death") |> 
-  filter(drug_group  != "alcohol only") |> 
-  filter(treatment_status != "Died one or more years following discharge") |> 
+
+# All-cause mortality -----------------------------------------------------
+
+ons_leading_mortality_causes <- 
+read.xlsx(
+  xlsxFile = "https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/deathsregisteredinenglandandwalesseriesdrreferencetables/2022/dr2022corrected.xlsx",
+          sheet = "10b",
+          rows = c(6:55)) |> 
+  janitor::clean_names() |> 
   as_tibble() |> 
-  group_by(area_code, area_name, death_cause, age, agegrp, drug_group, treatment_status) |> 
-  summarise(count = sum(count)) |> 
-  pivot_wider(names_from = treatment_status, values_from = count, values_fill = 0) 
+  mutate(percentage_of_all_deaths_percent = percentage_of_all_deaths_percent / 100)
+
+write_csv(ons_leading_mortality_causes, "data/processed/ons_leading_mortality_causes.csv")
 
 
 
 
+# Life tables -------------------------------------------------------------
+
+# National Life Tables, United Kingdom, period expectation of life, based on data for the years 2020-2022
+url <- "https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/birthsdeathsandmarriages/lifeexpectancies/datasets/nationallifetablesunitedkingdomreferencetables/current/nltuk198020203.xlsx"
+
+life_tables <- 
+read.xlsx(
+  xlsxFile = url,
+  sheet = "2020-2022",
+  startRow = 6
+  ) |> 
+  rename_with(.cols = 1:6, ~paste0(.x, "_male")) |> 
+  rename_with(.cols = 7:12, ~paste0(.x, "_female"))
 
 
+life_tables <- 
+life_tables |> 
+  select(age_male, ex_male, age_female, ex_female) |> 
+  pivot_longer(cols = contains("age"), values_to = "age", names_to = "sex") |> 
+  mutate(sex = str_remove(sex, "age_"))
+  
 
-
-
-
+life_tables |> 
+  write_csv("data/processed/life_tables.csv")

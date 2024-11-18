@@ -1,8 +1,7 @@
 ---
 title: "Deaths associated with substance use"
 subtitle: "Premature mortality and life-years lost due to drug and alcohol use"
-output-file: DHSC_powerpoint_example
-author: ""
+author: "OHID"
 date: today
 number-sections: false
 format:
@@ -11,42 +10,36 @@ execute:
   echo: false
   warning: false
   message: false
+
 ---
 
+# Number of deaths associated with drug use
 
-- Ask 1: What proportion of premature deaths, given a cutoff point e.g. 55, are due to drugs and alcohol.
-- Ask 2: Years of life lost (YLL) as a measure of premature mortality
-- Ask 3: Add IMD
+The ONS classifies death related to drug poisoning according ICD-10 codes. Certain ICD-10 codes classify a death as a "drug misuse death"[^1]. Each of these requires a specific substance (e.g. heroin) or substance category (e.g. opioids) to be indicated either in the ICD-10 code or on the death certificate.
 
 
-# 1. Number of deaths associated with drug use 
 
-The ONS classifies death related to drug poisoning according ICD-10 codes. Certain ICD-10 codes classify a death as a "drug misuse death"[^1]. Each of these requires a specific substance (e.g. heroin) or substance category (e.g. opioids) to be indicated either in the ICD-10 code or on the death certificate. 
-
-There are deaths each year where the ONS holds no information on the substance(s) involved [^2]
+There are deaths each year where the ONS holds no information on the substance(s) involved.
 
 | Year of death registration | All drug poisonings | Number of deaths without substance information | Percentage without substance information |
-| :------------------------: | :-----------------: | :--------------------------------------------: | :---------------------------------------: |
-|            2023            |       5,448         |                     1,245                      |                  22.9                     |
-|            2022            |       4,907         |                     1,239                      |                  25.2                     |
-|            2021            |       4,859         |                     1,219                      |                  25.1                     |
-|            2020            |       4,561         |                     1,050                      |                  23.0                     |
+|:--------------:|:--------------:|:--------------------:|:------------------:|
+|            2023            |        5,448        |                     1,245                      |                   22.9                   |
+|            2022            |        4,907        |                     1,239                      |                   25.2                   |
+|            2021            |        4,859        |                     1,219                      |                   25.1                   |
+|            2020            |        4,561        |                     1,050                      |                   23.0                   |
 
----
+------------------------------------------------------------------------
 
-Some of these will be classified as related to drug misuse where an ICD-10 code indicates mental and behavioural disorders due to drug use (excluding alcohol and tobacco) without a specific substance (e.g. F19 "multiple drug use and use of other psychoactive substances"). 
+-   Some of these will be classified as related to drug misuse where an ICD-10 code indicates mental and behavioural disorders due to drug use (excluding alcohol and tobacco) without a specific substance (e.g. F19 "multiple drug use and use of other psychoactive substances").
 
-But others, broadly those coded as accidental/intentional self-poisonings or self-poisonings of unknown intent, will not be classfified as related to drug misuse unless a controlled drug under Misuse of Drugs Act 1971 was mentioned on the death record. 
+-   Others, coded as accidental/intentional self-poisonings or self-poisonings of unknown intent, will not be classfified as related to drug misuse unless a controlled drug under Misuse of Drugs Act 1971 was mentioned on the death record.
 
-The data linkage between ONS mortality and NDTMS allows some of those deaths to be identified indirectly as related to drug misuse where the person that died had had contact with the drug treatment system within a year of their date of death. 
+-   The data linkage between ONS mortality and NDTMS allows some of those deaths to be identified indirectly as related to drug misuse where the person that died had had contact with the drug treatment.
 
---- 
+------------------------------------------------------------------------
 
-```{r, out.width=40, out.height=30, dpi = 300}
-
-
+```{r}
 library(flextable)
-
 source("R/drug_deaths_functions.R")
 source("R/plotting_functions.R")
 source("R/themes.R")
@@ -58,32 +51,36 @@ deaths_in_treatment_file <-
   "data/raw/tx_deaths_la_2122_2223.parquet"
 
 national_data <- 
-combine_national_data(
-  poisoning_data = process_poisoning_data(file_path = drug_poisoning_deaths_file,
-                                          date_of = "occurence",
-                                          years = 2022),
-  treatment_deaths_data = process_deaths_in_treatment(
-    file_path = deaths_in_treatment_file,
-    years = 2022,
-    exclude_poisoning = TRUE,
-    by_treatment_status = TRUE,
-    by_death_cause = FALSE
+  combine_national_data(
+    poisoning_data = process_poisoning_data(file_path = drug_poisoning_deaths_file,
+                                            date_of = "occurence",
+                                            years = 2022),
+    treatment_deaths_data = process_deaths_in_treatment(
+      file_path = deaths_in_treatment_file,
+      years = 2022,
+      exclude_poisoning = TRUE,
+      by_treatment_status = TRUE,
+      by_death_cause = FALSE,
+      exclude_alcohol_specific_deaths = TRUE
+    )
   )
-)
 
 national_data <- 
   relabel_national_data(national_data = national_data)
 
 p1 <- plot_national_data(plot_data = national_data)
 
-
 p1 <- add_plot_annotations(plot = p1, data = national_data)
 
+png(filename = "plots/plot_1.png", height = 18,  width = 26, units = "cm", res = 200)
 p1
+invisible(dev.off())
 
 ```
 
----
+![](plots/plot_1.png){fig-alt="Bar chart showing the composition of deaths associated with drug use"}
+
+------------------------------------------------------------------------
 
 ```{r, out.width=60, out.height=30, dpi = 300}
 drug_misuse_age_data <- function(){
@@ -175,10 +172,7 @@ plot
 
 ```
 
-
-
----
-
+------------------------------------------------------------------------
 
 ```{r}
 ft <- 
@@ -196,8 +190,7 @@ ft
  
 ```
 
-
----
+------------------------------------------------------------------------
 
 ```{r, fig.height=20, fig.width=40, fig.dpi=200}
 
@@ -328,7 +321,7 @@ p1
 
 ```
 
----
+------------------------------------------------------------------------
 
 ```{r, fig.height=15, fig.width=30}
 p2 <- 
@@ -363,27 +356,37 @@ data |>
 p2
 ```
 
----
+------------------------------------------------------------------------
 
+## [^2]: This is the first four rows of `Table 11` in the same release.
+
+# Years of life lost due to substance use
+
+-Years of life lost (YLL) is a measure of the impact of premature mortality, helpfully defined by Public Health England [here](https://fingertips.phe.org.uk/static-reports/health-profile-for-england/definitions-regional.html#years-of-life-lost-yll)
+
+-Chudasama et al. (2022) investigated five methods for estimating YLL[^2]. The first two methods are feasible with the available data for YLL from drug use and alcohol specific deaths. Only the drug-related YLL could be segmented by geographical estimates of deprivation.
+
+-All five methods are detailed in the supplementary PDF [here](https://ars.els-cdn.com/content/image/1-s2.0-S0895435622001639-mmc1.pdf).
+
+---
+- The crude expected years of life lost is:
+
+
+
+$$
+YLL = (D_x)(e_{x}^s)
+$$
+
+- Where $D_x$ is the number of deaths and $e_{x}^s$ is the standard age of death from the external life expectancy.
+
+- Total YLL associated with drug use was **215,148**. 
+
+- For comparison Heald et al. (2024)[^3] estimated the impact of obesity on YLL in England at 791,689 in 2019. 
+
+- Deaths at ages between 35 and 54 accounted for 60% of the YLL.
+
+![](plots/yll_plot_age_group.png)
 [^1]: The criteria for this classification are described in `Box 2` of the `Definition` tab of the latest relese of *Deaths related to drug poisoning, England and Wales* available [here](https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/deathsrelatedtodrugpoisoningenglandandwalesreferencetable).
-[^2]: This is the first four rows of `Table 11` in the same release.
----
+[^2]: Chudasama, Y.V., Khunti, K., Gillies, C.L., Dhalwani, N.N., Davies, M.J., Yates, T., & Zaccardi, F. (2022). Estimates of years of life lost depended on the method used: tutorial and comparative investigation. Journal of Clinical Epidemiology, 150, pp. 42-50. Available at: https://doi.org/10.1016/j.jclinepi.2022.06.012 [Accessed 6 Nov. 2024].
+[^3]: Heald, A., Stedman, M., Fryer, A.A., Davies, M.B., Rutter, M.K., Gibson, J.M. and Whyte, M., 2024. Counting the lifetime cost of obesity: Analysis based on national England data. Diabetes, Obesity and Metabolism, 26(4), pp.1464-1478.
 
-# 2. Years of life lost due to substance use  
-
-Years of life lost (YLL) is a measure of the impact of premature mortality, helpfully defined by Public Health England [here](https://fingertips.phe.org.uk/static-reports/health-profile-for-england/definitions-regional.html#years-of-life-lost-yll)
-
-Chudasama et al. (2022) investigated five methods for estimating YLL[^3]. The first two methods are feasible with the available data for YLL from drug use and alcohol specific deaths. Only the drug-related YLL could be segmented by geographical estimates of deprivation.
-
-All five methods are detailed in the supplementary PDF [here](https://ars.els-cdn.com/content/image/1-s2.0-S0895435622001639-mmc1.pdf).
-
----
-
-## Mortality data
-- Deaths related to drug misuse as defined by the ONS[^4].
-- Additional drugs related to drugs misuse that the ONS had insufficient data to classify, but can be inferred from the data linkage of ONS data with NDTMS data by [Better Outcomes through Linked data (BOLD)](https://www.gov.uk/government/publications/ministry-of-justice-better-outcomes-through-linked-data-bold) [^5].
-- Alcohol specific deaths
-
-[^3]: Chudasama, Y.V., Khunti, K., Gillies, C.L., Dhalwani, N.N., Davies, M.J., Yates, T., & Zaccardi, F. (2022). Estimates of years of life lost depended on the method used: tutorial and comparative investigation. Journal of Clinical Epidemiology, 150, pp. 42-50. Available at: https://doi.org/10.1016/j.jclinepi.2022.06.012 [Accessed 6 Nov. 2024].
-[^4]: *Not publicly available*
-[^5]: *Not publicly available*
