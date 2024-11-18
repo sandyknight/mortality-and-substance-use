@@ -15,6 +15,8 @@ execute:
 
 # Number of deaths associated with drug use
 
+---
+
 - The ONS classifies death related to drug poisoning according to ICD-10 codes.
 - Certain ICD-10 codes classify a death as a "drug misuse death".[^1] 
 - Each of these requires a specific substance (e.g. heroin) or substance category (e.g. opioids) to be indicated either in the ICD-10 code or on the death certificate.
@@ -23,11 +25,14 @@ execute:
 - There are deaths each year where the ONS holds no information on the substance(s) involved (see table 1).
 
 | Year of death registration | All drug poisonings | Number of deaths without substance information | Percentage without substance information |
-|:--------------:|:--------------:|:--------------------:|:------------------:|
-|            2023            |        5,448        |                     1,245                      |                   22.9                   |
-|            2022            |        4,907        |                     1,239                      |                   25.2                   |
-|            2021            |        4,859        |                     1,219                      |                   25.1                   |
-|            2020            |        4,561        |                     1,050                      |                   23.0                   |
+|----------------------------|---------------------|-----------------------------------------------|------------------------------------------|
+| 2023                       | 5448                | 1245                                          | 22.9                                     |
+| 2022                       | 4907                | 1239                                          | 25.2                                     |
+| 2021                       | 4859                | 1219                                          | 25.1                                     |
+| 2020                       | 4561                | 1050                                          | 23.0                                     |
+
+
+Table 1: Number of drug poisonings deaths without substance information.
 
 ------------------------------------------------------------------------
 
@@ -174,7 +179,7 @@ plot
 ```
 
 ------------------------------------------------------------------------
-
+## Causes of non-poisoning deaths by treatment status
 ```{r}
 ft <- 
  create_cause_of_death_table(
@@ -361,11 +366,15 @@ p2
 
 # Years of life lost due to substance use
 
+---
+
 - Years of life lost (YLL) is a measure of the impact of premature mortality, helpfully defined by Public Health England [here](https://fingertips.phe.org.uk/static-reports/health-profile-for-england/definitions-regional.html#years-of-life-lost-yll).
 
 - Chudasama et al. (2022) investigated five methods for estimating YLL.[^2] The first two methods are feasible with the available data for YLL from drug use and alcohol-specific deaths. Only the drug-related YLL could be segmented by geographical estimates of deprivation.
 
 - All five methods are detailed in the supplementary PDF [here](https://ars.els-cdn.com/content/image/1-s2.0-S0895435622001639-mmc1.pdf).
+
+---
 
 The crude expected years of life lost is:
 

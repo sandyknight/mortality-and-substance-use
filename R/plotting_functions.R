@@ -154,6 +154,5 @@ create_cause_of_death_table <-
       ) |>
       arrange(`Died in treatment`) |>
       rename("Cause of death" = death_cause) |>
-      flextable(cwidth = 2) |>
-      theme_booktabs()
+      knitr::kable(format.args = list(big.mark = ","), label = "Table 2: Count of cause of death by treatment status")
   }
