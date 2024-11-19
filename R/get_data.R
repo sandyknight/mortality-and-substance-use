@@ -125,3 +125,26 @@ life_tables |>
 
 life_tables |> 
   write_csv("data/processed/life_tables.csv")
+
+
+
+# Mid-year population estimates 2022 --------------------------------------
+
+url <- 
+  "https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/analysisofpopulationestimatestoolforuk/2023/theanalysisofpopulationestimatestool2023ew.xlsx"
+
+
+population_2022 <- # Get 2022 mid-year population estimate for England
+read.xlsx(
+  xlsxFile = url, rows = c(1:183), cols = c(1,2,3,4,16), sheet = "MYEB2"
+)
+
+write_csv(population_2022, "data/processed/population_2022.csv")
+
+
+
+# ONS avoidable mortality estimates ---------------------------------------
+
+url <- 
+  "https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/healthandsocialcare/causesofdeath/datasets/avoidablemortalityinenglandandwalessupplementarydatatables/2022/avoidablemortalitysupplementarydatatables2022.xlsx"
+
