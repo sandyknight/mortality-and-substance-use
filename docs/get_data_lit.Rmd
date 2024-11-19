@@ -1,0 +1,119 @@
+---
+title: "get_data"
+output: html_document
+date: "2024-11-08"
+---
+
+```{r}
+library(data.table)
+library(tidyverse)
+library(openxlsx)
+library(arrow)
+
+```   
+
+
+
+### IMD
+
+```{r}
+url <- # UTLA IMD summaries URL
+  "https://assets.publishing.service.gov.uk/media/5d8b3d7aed915d0369518030/File_11_-_IoD2019_Local_Authority_District_Summaries__upper-tier__.xlsx"
+
+imd <-
+read.xlsx(xlsxFile = url, sheet = "IMD") |>
+  janitor::clean_names()
+
+imd |> 
+  select(upper_tier_local_authority_district_code_2019, upper_tier_local_authority_district_name_2019, imd_average_score) |>
+  mutate(imd_decile = ntile(imd_average_score, 10)) |> 
+  write_csv("data/raw/utla_imd_decile.csv")
+
+```
+# Drug poisoning deaths ---------------------------------------------------
+
+#  This file is NDTMS-ONS data linkage; received by email from Stefan and named:
+# "table1_all deaths_Cocaine version 1.xlsx"
+```{r}
+df <- # Load deaths data
+  openxlsx::read.xlsx("data/raw/table1_all deaths_Cocaine version 1.xlsx", sheet = "table1_all deaths")
+
+write_parquet(df, "data/raw/ndtms_mortality_data.parquet")
+
+dt <- # Deaths from drug misuse & suspected deaths from drug misuse but not recorded as such
+  dt[(drug_misuse_combined == 0 & Treatment_Status != "no match with NDTMS")| drug_misuse_combined == 1,]
+
+write_parquet(dt, "data/raw/deaths_related_to_misuse_inc_not_rec.parquet")
+
+```
+
+# Non-poisoning deaths ----------------------------------------------------
+
+Deaths in treatment and deaths within 1 year of leaving treatment
+
+This data is from [NDTMS.net](https://beta2.ndtms.net/NDTMSReports/PrevalenceAndUnmetNeedToolkit) where I had to click each individual DAT before exporting.
+
+Since the data export only had names for areas I used the EAT Toolpak Excel add-in to convert area names to DAT codes and DAT codes to GSS codes.
+
+This failed in 4000 rows because it's not fully up to date. Where it fails, it leaves the `area_name` in `dat_code`.
+
+```{r}
+
+tx_deaths <- # Load the data and clean the names to snake case
+  read.xlsx("data/raw/Local Authority Death causes for NDTMS clients.xlsx", sheet = "Export") |> 
+  janitor::clean_names()
+```
+# There's an extra row listing the all filters I had to use to get the data from
+# ndtms.net: 
+```{r}
+tx_deaths |> # I'm going to save the list as a text file...
+  filter(is.na(area_name)) |> 
+  pull(period) |> 
+  writeLines("data/raw/Local Authority Death causes for NDTMS clients - metadata (filters).txt")
+cat(readLines("data/raw/Local Authority Death causes for NDTMS clients - metadata (filters).txt"))
+```
+```{r}
+tx_deaths <- # ...and then remove it from the data
+tx_deaths |> 
+  filter(!is.na(area_name))
+```
+
+
+# Check for redundant columns
+```{r}
+apply(X = tx_deaths, FUN = function(x) length(unique(x)), MARGIN = 2) |>
+  t() |>
+  t() |> `colnames<-`("Unique values")
+```
+# Cols `period` and `indicator` can be dropped
+```{r}
+
+tx_deaths <- 
+  tx_deaths |> 
+  select(-period, -indicator)
+```
+
+# But unique values for numbers of deaths looks low
+# Check max
+
+max(pull(tx_deaths, number_of_deaths))
+
+# Given max is 9 and we removed zeros this seems OK. 
+
+# But final check with England data downloaded from the same source:
+
+tx_deaths |> 
+  group_by(age_group, substance_group) |> 
+  summarise(number_of_deaths = sum(number_of_deaths)) |> 
+  pivot_wider(names_from = substance_group, values_from = number_of_deaths)
+
+
+
+readxl::read_xlsx("data/raw/Comparator Death causes for NDTMS clients.xlsx", sheet = "Export") |> 
+  janitor::clean_names() |> 
+  filter(!is.na(area_name)) |> 
+  group_by(age_group, substance_group) |> 
+  summarise(number_of_deaths = sum(number_of_deaths, na.rm = TRUE)) |> 
+  pivot_wider(names_from = substance_group, values_from = number_of_deaths)
+
+

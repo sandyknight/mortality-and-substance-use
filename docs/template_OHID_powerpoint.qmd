@@ -1,0 +1,114 @@
+---
+title: "Drug-related deaths"
+subtitle: "What can the data tell us?"
+output-file: OHID_sk
+author: "Sandy Knight"
+date: today
+number-sections: true
+format:
+  OHID-pptx
+execute:
+  echo: false
+  warning: false
+---
+
+# Section header slide
+
+## Guidance
+
+**To do:**
+
+-   Update the details at the top of the page for your presentation.
+
+-   Create your powerpoint by choosing the types of slides you require and replacing the placeholder text with your contents.
+
+-   To render the powerpoint, save this file and press render.
+
+**Tips:**
+
+-   Slides are defined with a level 2 heading (##).
+
+-   To add bullet points, use a hyphen followed by 2 spaces then the text, and a blank line between each bullet point.
+
+## Guidance (2)
+
+-   Quarto has seven styles of slide layout which it can use, as shown in this example. However, additional OHID slide layouts can be manually added in PowerPoint after it has been rendered.
+
+-   [Information about slide types](https://quarto.org/docs/presentations/powerpoint.html#slide-layouts).
+
+-   Once rendered and in PowerPoint you can make further changes if required.
+
+## Guidance (3)
+
+To add R code or an R output (see options on the [Quarto website](https://quarto.org/docs/reference/cells/cells-knitr.html#overview)).
+
+To combine text with code outputs outputs, the code chunk options need to be 'results: asis' and the text needs to be within the cat() function.
+
+```{r}
+#| results: asis
+cat(paste0("For example, there are ", nrow(mtcars), " cars in the mtcars dataset."))
+```
+
+## Title and Content slide
+
+This is a Title and Content slide.
+
+-   Bullet point 1
+
+-   Bullet point 2
+
+## 
+
+::: notes
+Speaker notes go here. This is a blank slide.
+:::
+
+## Two Content slide
+
+::: columns
+::: column
+contents column 1...
+:::
+
+::: column
+contents column 2...
+:::
+:::
+
+## Comparison slide
+
+::: columns
+::: column
+contents column 1...
+
+```{r}
+htmlTable::htmlTable(head(mtcars[1:2]))
+```
+:::
+
+::: column
+contents column 2...
+
+```{r}
+plot(head(mtcars[1:2]))
+```
+:::
+:::
+
+## Content with Caption
+
+```{r}
+htmlTable::htmlTable(head(mtcars[1:2]))
+```
+
+## Picture with Caption
+
+-   The caption for the image goes in the square brackets, this can be left blank if no caption is needed.
+
+-   The file path for the image goes in the round brackets.
+
+-   More options can be found on the [Quarto website](https://quarto.org/docs/authoring/figures.html).
+
+-   You need to manually add alt-text to figures by opening the presentation in PowerPoint.
+
+![Logo](example_image.png)
