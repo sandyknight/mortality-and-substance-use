@@ -17,7 +17,7 @@ deaths_in_treatment_file <-
 national_data <- 
   combine_national_data(
     poisoning_data = process_poisoning_data(file_path = drug_poisoning_deaths_file,
-                                            date_of = "occurence",
+                                            date_of = "occurrence",
                                             years = 2022),
     treatment_deaths_data = process_deaths_in_treatment(
       file_path = deaths_in_treatment_file,

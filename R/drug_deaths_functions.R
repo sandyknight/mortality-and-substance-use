@@ -7,20 +7,21 @@ library(arrow)
 #' based on user-defined parameters, such as years, date type, and grouping.
 #'
 #' @param file_path Path to the parquet file containing drug poisoning data.
-#' @param date_of Either "occurence" (year of death) or "registration" (year of registration).
+#' @param date_of Either "occurrence" (year of death) or "registration" (year of registration).
 #' @param years Vector of years to include in the analysis.
 #' @param by Grouping variable: "area", "age", or NULL (national-level data).
+#' @param by_sex Whether to group by sex 
 #' @return A tibble with grouped and summarized poisoning data.
-process_poisoning_data <- function(file_path, date_of = "occurence", years = c(2022, 2023), by = NULL) {
+process_poisoning_data <- function(file_path, date_of = "occurrence", years = c(2022, 2023), by = NULL, by_sex = FALSE) {
   if (is.null(by)) {
     message(paste("Drug poisoning: national level data, all ages", years, sep = ", "))
   }
   # Decide which date variable to use
   date_of_var <- switch(
     date_of,
-    "occurence" = "dod_year",
+    "occurrence" = "dod_year",
     "registration" = "reg_year",
-    stop("Only 'occurence' or 'registration' are valid options!")
+    stop("Only 'occurrence' or 'registration' are valid options!")
   )
   
   # Handle grouping variable(s)
@@ -34,8 +35,15 @@ process_poisoning_data <- function(file_path, date_of = "occurence", years = c(2
   } else {
     by_var <- NULL
   }
-  
+ 
+ if (isTRUE(by_sex)){
+   by_vars <- c(by_var, "sex")
+ } else {
+   by_vars <- by_var
+ }
+   
   # Read and process data
+  result <- 
   read_parquet(file_path) %>%
     janitor::clean_names() %>%
     mutate(
@@ -69,14 +77,23 @@ process_poisoning_data <- function(file_path, date_of = "occurence", years = c(2
       )
     ) %>%
     group_by(
-      pick(by_var),
-      pick(date_of_var),
+      !!!syms(by_vars),
+      !!!syms(date_of_var),
       additional_poisoning_deaths
     ) %>%
     summarise(
       count = n(),
       .groups = "drop"
     )
+ 
+    if (isTRUE(by_sex)) {
+    result <- 
+      result |> 
+      mutate(sex = case_match(sex,"M" ~ "male", "F" ~ "female"))
+    }
+  
+  return(result)
+   
 }
 
 #' Process deaths in treatment data
@@ -89,6 +106,7 @@ process_poisoning_data <- function(file_path, date_of = "occurence", years = c(2
 #' @param by Grouping variable: "area", "age", or NULL.
 #' @param by_treatment_status Whether to group by treatment status.
 #' @param by_death_cause Whether to group by cause of death.
+#' @param by_sex Whether to group by sex 
 #' @param exclude_poisoning Whether to exclude drug poisoning deaths.
 #' @param exclude_alcohol_specific_deaths Whether to exclude alcohol-specific deaths.
 #' @return A tibble with grouped and summarized treatment data.
@@ -97,6 +115,7 @@ process_deaths_in_treatment <- function(file_path,
                                         by = NULL,
                                         by_treatment_status = FALSE,
                                         by_death_cause = FALSE,
+                                        by_sex = FALSE,
                                         exclude_poisoning = TRUE,
                                         exclude_alcohol_specific_deaths = TRUE
 ) {
@@ -121,7 +140,12 @@ process_deaths_in_treatment <- function(file_path,
   if (isTRUE(by_death_cause)) {
     grouping_vars <- c(grouping_vars, "death_cause")
   }
+
+ if (isTRUE(by_sex)) {
+    grouping_vars <- c(grouping_vars, "sex")
+  }
   
+    
   # Read and process data
   data <- read_parquet(file_path) %>%
     mutate(
@@ -147,7 +171,16 @@ process_deaths_in_treatment <- function(file_path,
   result <- data %>%
     group_by(across(all_of(grouping_vars))) %>%
     summarise(count = sum(count), .groups = "drop")
+
+  # If grouped by sex column, standardise sex coding  
+   
+  if (isTRUE(by_sex)) {
+    result <- 
+    result |> 
+      mutate(sex = tolower(sex))
+  }
   
+   
   return(result)
 }
 

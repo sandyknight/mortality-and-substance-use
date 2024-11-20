@@ -1,0 +1,19 @@
+sex,cause,year,england_syll_per_population,england_lower_95_percent_confidence_limit,england_upper_95_percent_confidence_limit
+Males,All causes,2022,6858.9,6804,6913.8
+Males,Infectious diseases,2022,94.8,88.2,101.4
+Males,Neoplasms,2022,1564.3,1540.8,1587.9
+Males,Diseases of the circulatory system,2022,1986.9,1959.6,2014.3
+Males,Diseases of the respiratory system,2022,590.6,576,605.1
+Males,Injuries,2022,916.1,892.1,940
+Males,Alcohol-related and drug-related,2022,1057.2,1033.3,1081
+Males,Provisional assignment of new diseases of uncertain etiology or emergency use,2022,249.6,239.7,259.5
+Males,Other,2022,399.3,384.8,413.9
+Females,All causes,2022,4536.1,4491.1,4581
+Females,Infectious diseases,2022,80.2,74,86.5
+Females,Neoplasms,2022,1691.6,1665.5,1717.8
+Females,Diseases of the circulatory system,2022,901.6,882.8,920.3
+Females,Diseases of the respiratory system,2022,509.2,495.4,523
+Females,Injuries,2022,312.7,298.5,326.8
+Females,Alcohol-related and drug-related,2022,576.1,558.3,593.9
+Females,Provisional assignment of new diseases of uncertain etiology or emergency use,2022,180.4,171.6,189.2
+Females,Other,2022,284.3,271.7,296.9

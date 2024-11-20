@@ -212,3 +212,64 @@ get_avoidable_mortality <- function() {
 }
 
 
+<<<<<<< HEAD
+=======
+
+# Life tables -------------------------------------------------------------
+
+# National Life Tables, United Kingdom, period expectation of life, based on data for the years 2020-2022
+url <- "https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/birthsdeathsandmarriages/lifeexpectancies/datasets/nationallifetablesunitedkingdomreferencetables/current/nltuk198020203.xlsx"
+
+life_tables <- 
+read.xlsx(
+  xlsxFile = url,
+  sheet = "2020-2022",
+  startRow = 6
+  ) |> 
+  rename_with(.cols = 1:6, ~paste0(.x, "_male")) |> 
+  rename_with(.cols = 7:12, ~paste0(.x, "_female"))
+
+
+life_tables <- 
+life_tables |> 
+  select(age_male, ex_male, age_female, ex_female) |> 
+  as_tibble() |> 
+  pivot_longer(cols = c(ex_male, ex_female), names_to = "sex", values_to = "ex") |> 
+  mutate(sex = str_remove(sex, "ex_")) |> 
+  select(-age_male) |> 
+  rename("age" = age_female)
+  
+
+life_tables |> 
+  write_csv("data/processed/life_tables.csv")
+
+
+
+# Mid-year population estimates 2022 --------------------------------------
+
+url <- 
+  "https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/analysisofpopulationestimatestoolforuk/2023/theanalysisofpopulationestimatestool2023ew.xlsx"
+
+
+population_2022 <- # Get 2022 mid-year population estimate for England
+read.xlsx(
+  xlsxFile = url, rows = c(1:183), cols = c(1,2,3,4,16), sheet = "MYEB2"
+)
+
+write_csv(population_2022, "data/processed/population_2022.csv")
+
+
+
+# ONS avoidable mortality estimates ---------------------------------------
+
+url <- 
+  "https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/healthandsocialcare/causesofdeath/datasets/avoidablemortalityinenglandandwalessupplementarydatatables/2022/avoidablemortalitysupplementarydatatables2022.xlsx"
+
+
+avoidable_mortality <- 
+read.xlsx(xlsxFile = url, sheet = "Table_1", startRow = 7, cols = c(1:6)) |> 
+  janitor::clean_names() |> 
+  filter(year == 2022)
+
+write_csv(avoidable_mortality, "data/processed/avoidable_mortality_2022.csv")
+>>>>>>> 576d0e2a7a71d58771118988cce1deddc4b05cf5

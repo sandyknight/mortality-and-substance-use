@@ -393,7 +393,30 @@ Where \(D_x\) is the number of deaths and \(e_{x}^s\) is the standard age of dea
 ![](plots/yll_plot_age_group.png)
 
 ---
+## YLL method II
 
+"Extend the basic formula and incorporate the discounting and age weighting requires a range of assumptions."
+
+$$
+
+Y_x = d_x \left[\frac{KCe^{r}(n^{a}x)}{(r + \beta)^2}(e^{z}[-(r+\beta)^{2}(e^{s}_{x} + a_{x}) - 1]) \right]
+
+$$
+
+
+The discount rate ($r$) is based on the concept that future mortality outcomes
+have less value than the present mortality outcomes. The discounting rate is a
+continuous and exponential function, therefore the higher the discount rate,
+the lower the impact is in the future. The usual time for the discounting rate
+is set at 3% per year. Age weighting is used because it enables the YLL
+equation to value differently at various ages, i.e. the value of years lived
+by a young adult could be noted to be worth more than that of a very young or
+an old individual. So, the parameters were estimated at $C=0.1658$ and $\beta=0.04$
+to account for this, which was calibrated and chosen from the 1990 GBD
+study.[1, 2]
+
+
+Aragón, T.J., Lichtensztajn, D.Y., Katcher, B.S., Reiter, R. and Katz, M.H., 2007. Calculating Expected Years of Life Lost to Rank the Leading Causes of Premature Death in San Francisco. San Francisco Department of Public Health.
 ### References
 
 [^1]: The criteria for this classification are described in `Box 2` of the `Definition` tab of the latest release of *Deaths related to drug poisoning, England and Wales*. Available [here](https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/deathsrelatedtodrugpoisoningenglandandwalesreferencetable).

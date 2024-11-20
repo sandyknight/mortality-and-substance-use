@@ -1,0 +1,74 @@
+---
+engine: knitr
+title: Years of life lost associated with drug use
+author: "OHID"
+date: today
+number-sections: true
+format:
+  DHSC-pptx
+execute:
+  echo: false
+  warning: false
+  message: false
+
+---
+
+- Years of life lost (YLL) is a measure of the impact of premature mortality, helpfully defined by Public Health England [here](https://fingertips.phe.org.uk/static-reports/health-profile-for-england/definitions-regional.html#years-of-life-lost-yll).
+
+- Chudasama et al. (2022) investigated five methods for estimating YLL.[^2] The first two methods are feasible with the available data for YLL from drug use and alcohol-specific deaths. Only the drug-related YLL could be segmented by geographical estimates of deprivation.
+
+- All five methods are detailed in the supplementary PDF [here](https://ars.els-cdn.com/content/image/1-s2.0-S0895435622001639-mmc1.pdf).
+
+---
+
+The crude expected years of life lost is:
+
+$$
+YLL = (D_x)(e_{x}^s)
+$$
+
+Where $D_x$ is the number of deaths and $e_{x}^s$ is the standard age of death from the external life expectancy.
+
+```{r}
+source("R/yll.R")
+```
+
+- Total YLL associated with drug use was `r yll_m1`. 
+
+- For comparison, Heald et al. (2024)[^3] estimated the impact of obesity on YLL in England at 791,689 in 2019.
+
+- Deaths at ages between 35 and 54 accounted for 60% of the YLL.
+
+![Crude YLL by age group](plots/yll_plot_age_group.png)
+
+---
+## YLL method II
+
+Adding discounting and age-weighting. 
+
+$$
+Y_x = d_x \left[\frac{KCe^{r}(n^{a}x)}{(r + \beta)^2}(e^{z}[-(r+\beta)^{2}(e^{s}_{x} + a_{x}) - 1]) \right]
+$$
+
+[^4]
+The discount rate ($r$) is based on the concept that future mortality outcomes
+have less value than the present mortality outcomes. The discounting rate is a
+continuous and exponential function, therefore the higher the discount rate,
+the lower the impact is in the future. The usual time for the discounting rate
+is set at 3% per year. Age weighting is used because it enables the YLL
+equation to value differently at various ages, i.e. the value of years lived
+by a young adult could be noted to be worth more than that of a very young or
+an old individual. So, the parameters were estimated at $C=0.1658$ and $\beta=0.04$
+to account for this, which was calibrated and chosen from the 1990 GBD
+study.
+
+
+
+
+[^1]: The criteria for this classification are described in `Box 2` of the `Definition` tab of the latest release of *Deaths related to drug poisoning, England and Wales*. Available [here](https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/deathsrelatedtodrugpoisoningenglandandwalesreferencetable).
+
+[^2]: Chudasama, Y.V., Khunti, K., Gillies, C.L., Dhalwani, N.N., Davies, M.J., Yates, T., & Zaccardi, F. (2022). Estimates of years of life lost depended on the method used: tutorial and comparative investigation. *Journal of Clinical Epidemiology*, 150, pp. 42–50. Available at: [https://doi.org/10.1016/j.jclinepi.2022.06.012](https://doi.org/10.1016/j.jclinepi.2022.06.012) [Accessed 6 Nov. 2024].
+
+[^3]: Heald, A., Stedman, M., Fryer, A.A., Davies, M.B., Rutter, M.K., Gibson, J.M., & Whyte, M. (2024). Counting the lifetime cost of obesity: Analysis based on national England data. *Diabetes, Obesity and Metabolism*, 26(4), pp. 1464–1478.
+
+[^4]:Aragón, T.J., Lichtensztajn, D.Y., Katcher, B.S., Reiter, R. and Katz, M.H., 2007. Calculating Expected Years of Life Lost to Rank the Leading Causes of Premature Death in San Francisco. *San Francisco Department of Public Health*.
