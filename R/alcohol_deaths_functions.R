@@ -1,4 +1,6 @@
 library(tidyverse)
+source("R/themes.R")
+source("R/dhsc_colour_palette.R")
 
 tx_alcohol_deaths <-
   read_csv("data/processed/tx_alcohol_deaths.csv")
@@ -62,6 +64,5 @@ tx_alcohol_deaths_by_cause %>%
   scale_y_continuous(labels = scales::comma) +
   scale_x_continuous(limits = c(0,3))
 
-scale_fill_dhsc()
 
 
