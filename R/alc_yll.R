@@ -1,82 +1,69 @@
 library(tidyverse)
-#source("R/themes.R")
-#source("R/dhsc_colour_palette.R")
+source("R/themes.R")
+source("R/dhsc_colour_palette.R")
+source("R/age_group_parse_function.R")
 
 tx_alcohol_deaths <-
   read_csv("data/processed/tx_alcohol_deaths.csv")
 
-tx_by_age <- 
-tx_alcohol_deaths |> 
-  group_by(age, sex) |> 
+tx_by_age <-
+tx_alcohol_deaths |>
+  group_by(age, sex) |>
   summarise(count = sum(count), .groups ="drop")
 
 alc_spec_deaths <-
   read_csv("data/processed/ons_alcohol-specific_deaths.csv")
 
-ons_by_age <- 
-alc_spec_deaths |> 
-  group_by(age_group, sex) |> 
-  summarise(n = sum(n), .groups = "drop") |> 
+ons_by_age <-
+alc_spec_deaths |>
+  group_by(age_group, sex) |>
+  summarise(n = sum(n), .groups = "drop") |>
   mutate(sex = str_remove(sex, "s"))
 
- cut_age_groups <-
-  function(x) {
-    cut(
-      x,
-      breaks = c(20, 24, 34, 44, 54, 64, 74, 84, 89),
-      labels = c(
-        "18-24",
-        "25-34",
-        "35-44",
-        "45-54",
-        "55-64",
-        "65-74",
-        "75-84",
-        "85-89"
-      ),
-      right = TRUE
-    )
-  }
- 
-tx_by_age$age_group <- cut_age_groups(x = pull(tx_by_age, age))
+age_df <-
+  parse_age_groups(unique(pull(ons_by_age, age_group)))
 
-tx_by_age_group <- 
-tx_by_age |> 
-  group_by(sex, age_group) |> 
-  summarise(count = sum(count), .groups ="drop") |> 
-  rename("n" = count)
+age_df <-
+age_df %>%
+  filter(!is.infinite(upper), !is.infinite(lower))  %>%
+  rowwise() %>%
+  mutate(interval = list(seq(lower, upper, 1))) %>%
+  unnest(interval)  %>%
+  select(-upper, -lower)
 
-alc_deaths_by_age_group <- 
-bind_rows(
-ons_by_age,
-tx_by_age_group
-) |> 
-  group_by(sex, age_group) |> 
-  summarise(n = sum(n), .groups = "drop")
+tx_deaths_by_age_group  <-
+left_join(tx_alcohol_deaths, age_df, by = c("age" = "interval")) %>%
+  group_by(sex, age_group) %>%
+  summarise(count = sum(count), .groups = "drop")
 
+alc_deaths_by_age_group  <-
+tx_deaths_by_age_group %>%
+  rename("n" = count) %>%
+  bind_rows(ons_by_age)
 
-alc_deaths_by_age_group
+alc_deaths_by_age_group <-
+alc_deaths_by_age_group %>%
+  mutate(sex = tolower(sex))
 source("R/get_data.R")
 
 get_life_tables()
 
-unique(alc_deaths_by_age_group$age_group)
+life_tables  <-
+left_join(life_tables, age_df, by = c("age" = "interval")) %>%
+  group_by(sex, age_group)  %>%
+  summarise(ex = mean(ex))
 
- cut_age_groups <-
-  function(x) {
-    cut(
-      x,
-      breaks = c(20, 24, 34, 44, 54, 64, 74, 84, 89),
-      labels = c(
-        "18-24",
-        "25-34",
-        "35-44",
-        "45-54",
-        "55-64",
-        "65-74",
-        "75-84",
-        "85-89"
-      ),
-      right = TRUE
-    )
-  }
+alcohol_yll  <-
+left_join(alc_deaths_by_age_group, life_tables, by = c("sex", "age_group")) %>%
+  mutate(yll = n * ex) %>%
+  group_by(age_group) %>%
+  summarise(yll = sum(yll)) %>%
+  filter(!is.na(yll))
+
+alcohol_yll %>%
+  ggplot(aes(x = age_group, y = yll)) +
+  geom_col() +
+  scale_y_continuous(labels = scales::comma) +
+  my_theme +
+  labs(title = "Years of life lost due to alcohol", subtitle = "by age group", x = "Age group", y = "Years of life lost")
+
