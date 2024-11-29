@@ -212,8 +212,6 @@ get_avoidable_mortality <- function() {
 }
 
 
-<<<<<<< HEAD
-=======
 
 # Life tables -------------------------------------------------------------
 
@@ -272,4 +270,3 @@ read.xlsx(xlsxFile = url, sheet = "Table_1", startRow = 7, cols = c(1:6)) |>
   filter(year == 2022)
 
 write_csv(avoidable_mortality, "data/processed/avoidable_mortality_2022.csv")
->>>>>>> 576d0e2a7a71d58771118988cce1deddc4b05cf5
