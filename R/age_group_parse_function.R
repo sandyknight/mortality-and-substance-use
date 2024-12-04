@@ -1,10 +1,9 @@
-# Function to parse age group strings into lower and upper bounds
 parse_age_groups <- function(age_groups) {
   parse_age_group <- function(s) {
     if (grepl("-", s)) {
       bounds <- as.numeric(strsplit(s, "-")[[1]])
       lower <- bounds[1]
-      upper <- bounds[2]
+      upper <- bounds[2] + 0.9999  # Adjust upper bound slightly
     } else if (grepl("^<", s)) {
       upper <- as.numeric(sub("^<", "", s))
       lower <- -Inf
@@ -30,6 +29,7 @@ parse_age_groups <- function(age_groups) {
   return(age_df)
 }
 
+
 assign_age_group_vectorized <- function(ages, age_df) {
   # Initialize a vector to store age groups
   age_groups <- rep(NA, length(ages))
@@ -53,9 +53,6 @@ assign_age_group_vectorized <- function(ages, age_df) {
   return(age_groups)
 }
 
-age_df <- 
-parse_age_groups(age_groups = unique(pull(ons_by_age, age_group))) 
 
-assign_age_group(ages = tx_by_age$age, age_df = parse_age_groups(age_groups))
 
-cut(pull(tx_by_age, age), breaks = pull(age_df, upper))
+
